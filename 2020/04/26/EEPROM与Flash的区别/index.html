@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#34495e">
+  <title>EEPROM与Flash的区别 | Hexo</title>
+  <link rel="alternate" href="path/of/rss" type="application/atom+xml">
+  <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+
+  
+
+  
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div class="mobile-header">
+    <span><i class="iconfont icon-turnon" id="mobile-nav-toggle"></i></span>
+    <div class="mobile-logo">
+      <a href="/.">Ztopic</a>
+    </div>
+  </div>
+  <div class="page" id="mobile-nav-panel">
+    <div class="container">
+      <header class="site-nav">
+      <div class="nav-content">
+        <div class="logo">
+          <a href="/">Ztopic</a>
+        </div>
+        <nav class="navbar">
+          <ul>
+            
+              <li class="menu-item">
+                <a href="/" class="menu-item-link"><i class="iconfont icon-home"></i>Home</a>
+              </li>
+            
+              <li class="menu-item">
+                <a href="/archives" class="menu-item-link"><i class="iconfont icon-archive"></i>Archive</a>
+              </li>
+            
+              <li class="menu-item">
+                <a href="/about" class="menu-item-link"><i class="iconfont icon-about"></i>About</a>
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+</header>
+
+      <div class="banner">
+  <div class="show">
+    <!-- <img src="/" alt="banner"> -->
+    <div class="banner-title">
+      
+        <div class="post-title">
+          EEPROM与Flash的区别
+            <div class="post-tags">
+    		    
+              <a class="tag-link" href="/tags/%E6%9C%AC%E6%96%87%E8%AE%B2%E8%BF%B0%E4%BA%86%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%99%A8%E4%BB%B6EEPROM%E4%BB%A5%E5%8F%8AFlash%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82%E3%80%82/" rel="tag">本文讲述了我们使用的存储器件EEPROM以及Flash之间的差异。</a>
+            
+    	      </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+      <main class="main"id="main">
+          <article class="post">
+  
+
+  <header>
+    <div class="post-title mobile-post-title">
+      <h1>EEPROM与Flash的区别</h1>
+        <div class="post-tags">
+        
+          <a class="tag-link" href="/tags/%E6%9C%AC%E6%96%87%E8%AE%B2%E8%BF%B0%E4%BA%86%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8%E7%9A%84%E5%AD%98%E5%82%A8%E5%99%A8%E4%BB%B6EEPROM%E4%BB%A5%E5%8F%8AFlash%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B7%AE%E5%BC%82%E3%80%82/" rel="tag">本文讲述了我们使用的存储器件EEPROM以及Flash之间的差异。</a>
+        
+        </div>
+    </div>
+    <div class="post-meta">
+      <span class="post-time"><i class="iconfont icon-calendar"></i>2020-04-26</span>
+      
+      <!----------------------------------->
+        
+      <!----------------------------------->
+    </div>
+  </header>
+  
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#EEPROM"><span class="toc-text">EEPROM</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><span class="toc-text">注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EEPROM的特性"><span class="toc-text">EEPROM的特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EEPROM接口"><span class="toc-text">EEPROM接口</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#IIC"><span class="toc-text">IIC</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><span class="toc-text">IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#SPI"><span class="toc-text">SPI</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#EEPROM最高可以达到20MHz。"><span class="toc-text">EEPROM最高可以达到20MHz。</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#除此之外还有MicroWire"><span class="toc-text">除此之外还有MicroWire</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ST-EEPROM产品框图"><span class="toc-text">ST  EEPROM产品框图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EEPROM存储阵列结构："><span class="toc-text">EEPROM存储阵列结构：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用电路设计"><span class="toc-text">应用电路设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EEPROM和Flash的区别"><span class="toc-text">EEPROM和Flash的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </div>
+
+
+  <div class="post-content">
+    <h4 id="EEPROM"><a href="#EEPROM" class="headerlink" title="EEPROM"></a>EEPROM</h4><p>EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。</p>
+<h6 id="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><a href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。" class="headerlink" title="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"></a>注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</h6><p>关于ROM、PROM、EPROM的区别请查看百度百科：<a href="https://baike.baidu.com/item/ROM/310411?fr=aladdin" target="_blank" rel="noopener">ROM</a></p>
+<h4 id="EEPROM的特性"><a href="#EEPROM的特性" class="headerlink" title="EEPROM的特性"></a>EEPROM的特性</h4><ul>
+<li>支持标准和快速I2C协议、兼容SPI总线</li>
+<li>1~256K的高密度存储</li>
+<li>1.8V~6V的款电压操作范围</li>
+<li>对全部存储器进行硬件写保护</li>
+<li>采用低功耗CMOS工艺</li>
+<li>可编程/擦除100万次</li>
+<li>数据保存期100年</li>
+<li>工业温度范围</li>
+</ul>
+<h4 id="EEPROM接口"><a href="#EEPROM接口" class="headerlink" title="EEPROM接口"></a>EEPROM接口</h4><h5 id="IIC"><a href="#IIC" class="headerlink" title="IIC"></a>IIC</h5><p>IIC接口的EEPROM很常见，因为IIC接口十分通用也很简单，只需要两个IO口以及上拉电阻就行了。（历史原因是IIC总线发展比较早，很早就普遍使用了，所以IIC的接口普及率高，EEPROM使用就很常见了。</p>
+<h6 id="IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><a href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。" class="headerlink" title="IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。"></a>IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</h6><p><img src="https://img-blog.csdnimg.cn/20190708191144853.png" alt="IIC接口的EEPROM"></p>
+<h5 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h5><p>SPI接口的EEPROM是为了应对IIC速率不高而解决的，因为IIC速率最高到1MHz（3.2MHz）速率，为了提高读取速度故发展出来了SPI接口的EEPROM。</p>
+<h6 id="EEPROM最高可以达到20MHz。"><a href="#EEPROM最高可以达到20MHz。" class="headerlink" title="EEPROM最高可以达到20MHz。"></a>EEPROM最高可以达到20MHz。</h6><p><img src="https://img-blog.csdnimg.cn/2019070822080120.png" alt="SPI接口EEPROM"></p>
+<h5 id="除此之外还有MicroWire"><a href="#除此之外还有MicroWire" class="headerlink" title="除此之外还有MicroWire"></a>除此之外还有MicroWire</h5><p>MicroWire串行接口是SPI的精简接口，就是除去CS引脚，只有余下的三个引脚。但是时钟改为既可以是自己发出也可以自己接收，比起标准的SPI更为简单与便捷。</p>
+<p><strong>速率比较如下：</strong><br><img src="https://img-blog.csdnimg.cn/20190708221331466.png" alt="在这里插入图片描述"></p>
+<h4 id="ST-EEPROM产品框图"><a href="#ST-EEPROM产品框图" class="headerlink" title="ST  EEPROM产品框图"></a>ST  EEPROM产品框图</h4><p>包含IIC地址配置引脚、控制逻辑、IIC接口、数据寄存器和地址寄存器以及实际存储区域。<br><img src="https://img-blog.csdnimg.cn/20190708221403342.png" alt="在这里插入图片描述"></p>
+<h4 id="EEPROM存储阵列结构："><a href="#EEPROM存储阵列结构：" class="headerlink" title="EEPROM存储阵列结构："></a>EEPROM存储阵列结构：</h4><p><img src="https://img-blog.csdnimg.cn/20190708221527471.png" alt="在这里插入图片描述"><br>EEPROM器件由存储器单元阵列组成，其组织允许字节操作，自动擦除寻址的字节（擦除状态），以及仅编程那些要改变为“1”的位（写入状态）。</p>
+<ul>
+<li>每个存储单元由一个与FLOTOX晶体管串联的选择晶体管组成，每个字节由8个存储单元和一个控制栅极晶体管组成，其漏极与所有8个FLOTOX晶体管的控制栅极共用。</li>
+<li>行（水平方向）由16个字节（或更多）组成，具体取决于内存大小<br>（每行中的字节数是数组大小的函数）。<br>对于每一行，所有选择晶体管和所有控制栅极晶体管都连接到行线。</li>
+<li>列按八个位线加一个Cg线分组。然后将其重复多次，作为一行中的字节数。</li>
+<li>位线对于位于列中的每个存储器单元的选择晶体管的所有漏极是共用的。<br>Cg线对于列的控制栅极晶体管的所有源是共同的。</li>
+</ul>
+<h4 id="应用电路设计"><a href="#应用电路设计" class="headerlink" title="应用电路设计"></a>应用电路设计</h4><p>1）电源引脚增加电阻是为了储能和滤波；<br>2）IIC的数据和时钟线是OD门结构，所以需要上拉；<br>3）写保护引脚上拉电阻是在上电时默认不进行写保护。<br><img src="https://img-blog.csdnimg.cn/20190708221633837.png" alt="在这里插入图片描述"></p>
+<h4 id="EEPROM和Flash的区别"><a href="#EEPROM和Flash的区别" class="headerlink" title="EEPROM和Flash的区别"></a>EEPROM和Flash的区别</h4><p><img src="https://img-blog.csdnimg.cn/20190708221837723.png" alt="在这里插入图片描述"></p>
+<p>请注意，存储时间是理论值并非实际值，人类从发明存储到现在也没多少年，所以100年只是理论估计，具体能不能到100年，要看后面的统计了。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>1、<a href="https://www.st.com/content/ccc/resource/technical/document/application_note/53/e2/c5/a9/e2/57/47/ce/CD00042024.pdf/files/CD00042024.pdf/jcr:content/translations/en.CD00042024.pdf" target="_blank" rel="noopener">意法半导体</a><br>2、<a href="http://www.zlgmcu.com/Category_1412/Index.aspx" target="_blank" rel="noopener">周立功电子</a><br>3、<a href="https://web.eecs.umich.edu/~prabal/teaching/eecs373-f10/readings/rom-eprom-eeprom-technology.pdf" target="_blank" rel="noopener">国外技术网站<del>1</del></a><br>4、<a href="https://www.electronics-notes.com/articles/electronic_components/semiconductor-ic-memory/eeprom-e2prom-technology.php" target="_blank" rel="noopener">国外技术网站<del>2</del></a></p>
+
+  </div>
+  <div class="post-footer">the end</div>
+</article>
+
+          
+  <nav class="pagination post-nav">
+    
+    
+      <a href="/2020/04/26/hello-world/">
+        <span class="next-post">Hello World<i class="iconfont icon-more"></i></span>
+      </a>
+    
+  </nav>
+
+
+          
+  
+
+
+      </main>
+    </div>
+    <footer>
+      <div class="social-links">
+        
+          
+            <a href="https://www.zhihu.com/" target="_blank" rel="noopener"><i class="iconfont icon-zhihu"></i></a>
+          
+        
+          
+            <a href="https://weibo.com" target="_blank" rel="noopener"><i class="iconfont icon-weibo"></i></a>
+          
+        
+          
+            <a href="https://github.com/" target="_blank" rel="noopener"><i class="iconfont icon-github"></i></a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+      
+        <div class="quote">
+          <p>Love all, trust a few, do wrong to none.——William Shakespeare</p>
+        </div>
+      
+      <div class="copyright">
+        <p>
+          Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>
+          <span>|</span>
+          Theme - <a href="https://github.com/wa-ri/hexo-theme-ztopic" target="_blank" rel="noopener">ztopic</a
+        </p>
+        <p>
+          <span>
+          
+          &copy;
+          
+            2020
+          
+          </span>
+          <i class="iconfont icon-circle"></i>
+          <span>John Doe</span>
+        </p>
+      </div>
+</footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  <div id="mobile-nav">
+  <nav id="mobile-nav-menu">
+    
+      <a href="/" class="mobile-nav-link"><i class="iconfont icon-home"></i>Home</a>
+    
+      <a href="/archives" class="mobile-nav-link"><i class="iconfont icon-archive"></i>Archive</a>
+    
+      <a href="/about" class="mobile-nav-link"><i class="iconfont icon-about"></i>About</a>
+    
+    <div class="mobile-intro"><i class="iconfont icon-pen"></i>practice makes perfect</div>
+  </nav>
+</div>
+
+
+  
+<script src="/libs/jQuery/jquery-3.2.1.min.js"></script>
+
+  
+<script src="/libs/slideout/slideout.min.js"></script>
+
+  
+    
+<link rel="stylesheet" href="/libs/fancybox/jquery.fancybox.css">
+
+    
+<script src="/libs/fancybox/jquery.fancybox.pack.js"></script>
+
+  
+  
+
+  
+<script src="/js/ztopic.js"></script>
+
+</body>
+</html>
