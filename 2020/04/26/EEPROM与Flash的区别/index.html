@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ROM," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="EEPROMEEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。关于ROM、PROM、EPR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EEPROM与Flash的区别">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:site_name" content="LP&#39;s Blog">
+<meta property="og:description" content="EEPROMEEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。关于ROM、PROM、EPR">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708191144853.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019070822080120.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221331466.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221403342.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221527471.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221633837.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221837723.png">
+<meta property="article:published_time" content="2020-04-26T13:40:19.000Z">
+<meta property="article:modified_time" content="2020-04-27T14:49:28.418Z">
+<meta property="article:author" content="Liu Peng">
+<meta property="article:tag" content="ROM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190708191144853.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/26/EEPROM与Flash的区别/"/>
+
+
+
+
+
+  <title>EEPROM与Flash的区别 | LP's Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LP's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Liu Peng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LP's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">EEPROM与Flash的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T21:40:19+08:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B0%8F%E5%AE%B9%E9%87%8F%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">小容量存储</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="EEPROM"><a href="#EEPROM" class="headerlink" title="EEPROM"></a>EEPROM</h3><h4 id="EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"><a href="#EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。" class="headerlink" title="EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"></a>EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。</h4><h6 id="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><a href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。" class="headerlink" title="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"></a>注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</h6><p>关于ROM、PROM、EPROM的区别请查看百度百科：<a href="https://baike.baidu.com/item/ROM/310411?fr=aladdin" target="_blank" rel="noopener">ROM</a></p>
+<h4 id="EEPROM的特性"><a href="#EEPROM的特性" class="headerlink" title="EEPROM的特性"></a>EEPROM的特性</h4><ul>
+<li>支持标准和快速I2C协议、兼容SPI总线</li>
+<li>1~256K的高密度存储</li>
+<li>1.8V~6V的款电压操作范围</li>
+<li>对全部存储器进行硬件写保护</li>
+<li>采用低功耗CMOS工艺</li>
+<li>可编程/擦除100万次</li>
+<li>数据保存期100年</li>
+<li>工业温度范围</li>
+</ul>
+<h4 id="EEPROM接口"><a href="#EEPROM接口" class="headerlink" title="EEPROM接口"></a>EEPROM接口</h4><h5 id="IIC"><a href="#IIC" class="headerlink" title="IIC"></a>IIC</h5><p>IIC接口的EEPROM很常见，因为IIC接口十分通用也很简单，只需要两个IO口以及上拉电阻就行了。（历史原因是IIC总线发展比较早，很早就普遍使用了，所以IIC的接口普及率高，EEPROM使用就很常见了。</p>
+<h6 id="IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><a href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。" class="headerlink" title="IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。"></a>IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</h6><p><img src="https://img-blog.csdnimg.cn/20190708191144853.png" alt="IIC接口的EEPROM"></p>
+<h5 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h5><p>SPI接口的EEPROM是为了应对IIC速率不高而解决的，因为IIC速率最高到1MHz（3.2MHz）速率，为了提高读取速度故发展出来了SPI接口的EEPROM。</p>
+<h6 id="EEPROM最高可以达到20MHz。"><a href="#EEPROM最高可以达到20MHz。" class="headerlink" title="EEPROM最高可以达到20MHz。"></a>EEPROM最高可以达到20MHz。</h6><p><img src="https://img-blog.csdnimg.cn/2019070822080120.png" alt="SPI接口EEPROM"></p>
+<h5 id="除此之外还有MicroWire"><a href="#除此之外还有MicroWire" class="headerlink" title="除此之外还有MicroWire"></a>除此之外还有MicroWire</h5><p>MicroWire串行接口是SPI的精简接口，就是除去CS引脚，只有余下的三个引脚。但是时钟改为既可以是自己发出也可以自己接收，比起标准的SPI更为简单与便捷。</p>
+<p><strong>速率比较如下：</strong><br><img src="https://img-blog.csdnimg.cn/20190708221331466.png" alt="在这里插入图片描述"></p>
+<h4 id="ST-EEPROM产品框图"><a href="#ST-EEPROM产品框图" class="headerlink" title="ST  EEPROM产品框图"></a>ST  EEPROM产品框图</h4><p>包含IIC地址配置引脚、控制逻辑、IIC接口、数据寄存器和地址寄存器以及实际存储区域。<br><img src="https://img-blog.csdnimg.cn/20190708221403342.png" alt="在这里插入图片描述"></p>
+<h4 id="EEPROM存储阵列结构："><a href="#EEPROM存储阵列结构：" class="headerlink" title="EEPROM存储阵列结构："></a>EEPROM存储阵列结构：</h4><p><img src="https://img-blog.csdnimg.cn/20190708221527471.png" alt="在这里插入图片描述"><br>EEPROM器件由存储器单元阵列组成，其组织允许字节操作，自动擦除寻址的字节（擦除状态），以及仅编程那些要改变为“1”的位（写入状态）。</p>
+<ul>
+<li>每个存储单元由一个与FLOTOX晶体管串联的选择晶体管组成，每个字节由8个存储单元和一个控制栅极晶体管组成，其漏极与所有8个FLOTOX晶体管的控制栅极共用。</li>
+<li>行（水平方向）由16个字节（或更多）组成，具体取决于内存大小<br>（每行中的字节数是数组大小的函数）。<br>对于每一行，所有选择晶体管和所有控制栅极晶体管都连接到行线。</li>
+<li>列按八个位线加一个Cg线分组。然后将其重复多次，作为一行中的字节数。</li>
+<li>位线对于位于列中的每个存储器单元的选择晶体管的所有漏极是共用的。<br>Cg线对于列的控制栅极晶体管的所有源是共同的。</li>
+</ul>
+<h4 id="应用电路设计"><a href="#应用电路设计" class="headerlink" title="应用电路设计"></a>应用电路设计</h4><p>1）电源引脚增加电阻是为了储能和滤波；<br>2）IIC的数据和时钟线是OD门结构，所以需要上拉；<br>3）写保护引脚上拉电阻是在上电时默认不进行写保护。<br><img src="https://img-blog.csdnimg.cn/20190708221633837.png" alt="在这里插入图片描述"></p>
+<h4 id="EEPROM和Flash的区别"><a href="#EEPROM和Flash的区别" class="headerlink" title="EEPROM和Flash的区别"></a>EEPROM和Flash的区别</h4><p><img src="https://img-blog.csdnimg.cn/20190708221837723.png" alt="在这里插入图片描述"></p>
+<p>请注意，存储时间是理论值并非实际值，人类从发明存储到现在也没多少年，所以100年只是理论估计，具体能不能到100年，要看后面的统计了。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>1、<a href="https://www.st.com/content/ccc/resource/technical/document/application_note/53/e2/c5/a9/e2/57/47/ce/CD00042024.pdf/files/CD00042024.pdf/jcr:content/translations/en.CD00042024.pdf" target="_blank" rel="noopener">意法半导体</a><br>2、<a href="http://www.zlgmcu.com/Category_1412/Index.aspx" target="_blank" rel="noopener">周立功电子</a><br>3、<a href="https://web.eecs.umich.edu/~prabal/teaching/eecs373-f10/readings/rom-eprom-eeprom-technology.pdf" target="_blank" rel="noopener">国外技术网站<del>1</del></a><br>4、<a href="https://www.electronics-notes.com/articles/electronic_components/semiconductor-ic-memory/eeprom-e2prom-technology.php" target="_blank" rel="noopener">国外技术网站<del>2</del></a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ROM/" rel="tag"># ROM</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/26/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/27/ufs/" rel="prev" title="UFS--新一代高速存储">
+                UFS--新一代高速存储 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Liu Peng</p>
+              <p class="site-description motion-element" itemprop="description">世间唯有爱与科技不可辜负</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#EEPROM"><span class="nav-number">1.</span> <span class="nav-text">EEPROM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"><span class="nav-number">1.1.</span> <span class="nav-text">EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM的特性"><span class="nav-number">1.2.</span> <span class="nav-text">EEPROM的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM接口"><span class="nav-number">1.3.</span> <span class="nav-text">EEPROM接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IIC"><span class="nav-number">1.3.1.</span> <span class="nav-text">IIC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SPI"><span class="nav-number">1.3.2.</span> <span class="nav-text">SPI</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#EEPROM最高可以达到20MHz。"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">EEPROM最高可以达到20MHz。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除此之外还有MicroWire"><span class="nav-number">1.3.3.</span> <span class="nav-text">除此之外还有MicroWire</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ST-EEPROM产品框图"><span class="nav-number">1.4.</span> <span class="nav-text">ST  EEPROM产品框图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM存储阵列结构："><span class="nav-number">1.5.</span> <span class="nav-text">EEPROM存储阵列结构：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用电路设计"><span class="nav-number">1.6.</span> <span class="nav-text">应用电路设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM和Flash的区别"><span class="nav-number">1.7.</span> <span class="nav-text">EEPROM和Flash的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">1.8.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Liu Peng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
