@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#1E90FF">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="Interface," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="USB物理层介绍及电路设计注意事项博文原创，转载请注明出处！ USB-Universal Serial BusUSB，是英文Universal Serial Bus，通用串行总线的缩写，是一个外部总线标准，用于规范电脑与外部设备的连接和通讯。是应用在PC领域的接口技术。USB接口支持设备的即插即用和热插拔功能。  USB是在1994年底由英特尔、康柏、IBM、Microsoft等多家公司联合提出的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="USB Interface Design">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/05/USB%20Interface/index.html">
+<meta property="og:site_name" content="LiuPeng&quot;s Blog">
+<meta property="og:description" content="USB物理层介绍及电路设计注意事项博文原创，转载请注明出处！ USB-Universal Serial BusUSB，是英文Universal Serial Bus，通用串行总线的缩写，是一个外部总线标准，用于规范电脑与外部设备的连接和通讯。是应用在PC领域的接口技术。USB接口支持设备的即插即用和热插拔功能。  USB是在1994年底由英特尔、康柏、IBM、Microsoft等多家公司联合提出的">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221419363.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221615943.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221658570.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221729163.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717221807990.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222223920.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222243847.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222327540.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222537473.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222557711.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222623174.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019071722271031.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222741179.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717222759756.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717223207657.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190717224302709.png">
+<meta property="article:published_time" content="2020-05-05T09:36:23.000Z">
+<meta property="article:modified_time" content="2020-05-05T01:43:27.735Z">
+<meta property="article:author" content="LiuPeng">
+<meta property="article:tag" content="Interface">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190717221419363.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/05/USB Interface/"/>
+
+
+
+
+
+  <title>USB Interface Design | LiuPeng"s Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiuPeng"s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世间唯有爱与科技不可辜负</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/05/USB%20Interface/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiuPeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiuPeng"s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">USB Interface Design</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-05T17:36:23+08:00">
+                2020-05-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E9%80%9F%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">高速总线接口</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/05/USB%20Interface/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/05/USB%20Interface/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="USB物理层介绍及电路设计注意事项"><a href="#USB物理层介绍及电路设计注意事项" class="headerlink" title="USB物理层介绍及电路设计注意事项"></a>USB物理层介绍及电路设计注意事项</h3><p>博文原创，转载请注明出处！</p>
+<h4 id="USB-Universal-Serial-Bus"><a href="#USB-Universal-Serial-Bus" class="headerlink" title="USB-Universal Serial Bus"></a>USB-Universal Serial Bus</h4><p>USB，是英文Universal Serial Bus，通用串行总线的缩写，是一个外部总线标准，用于规范电脑与外部设备的连接和通讯。是应用在PC领域的接口技术。USB接口支持设备的即插即用和热插拔功能。</p>
+<blockquote>
+<p>USB是在1994年底由英特尔、康柏、IBM、Microsoft等多家公司联合提出的。</p>
+</blockquote>
+<h4 id="Bus-拓扑"><a href="#Bus-拓扑" class="headerlink" title="Bus 拓扑"></a>Bus 拓扑</h4><p>决定一个USB host下面最多挂载127个设备，算上主机USB则是128个（2^7）USB将USB设备与USB主机连接。 USB物理互连是分层星形拓扑。<br>枢纽位于分层星形的中心。<br>每个线段是主机与集线器或功能之间的点对点连接，或连接到另一个集线器或功能的集线器。<br>由于允许集线器和电缆传播时间的时序限制，允许的最大层数为7（包括根层）。<br>请注意，在七层中，主机和任何设备之间的通信路径中最多可以支持五个非根集线器（就是除去主HOST仅能有5个HUB）。<br>复合装置（Compound Device）占两层; 因此，如果在第七级附加，则无法启用。</p>
+<p>USB拓扑如下：<br><img src="https://img-blog.csdnimg.cn/20190717221419363.png" alt="在这里插入图片描述"></p>
+<h4 id="USB信号"><a href="#USB信号" class="headerlink" title="USB信号"></a>USB信号</h4><p>USB信号包含：<br><img src="https://img-blog.csdnimg.cn/20190717221615943.png" alt="在这里插入图片描述"></p>
+<p>USB屏蔽线缆：<br><img src="https://img-blog.csdnimg.cn/20190717221658570.png" alt="在这里插入图片描述"></p>
+<p>各条信号线介绍如下：</p>
+<ul>
+<li><p>电源Vbus</p>
+</li>
+<li><p>数据线D+</p>
+</li>
+<li><p>数据线D-</p>
+</li>
+<li><p>信号参考GND</p>
+</li>
+<li><p>外壳屏蔽GND。</p>
+<h5 id="Vbus"><a href="#Vbus" class="headerlink" title="Vbus"></a>Vbus</h5></li>
+</ul>
+<p>首先讲电源Vbus，为USB设备供电引脚电源，一般是5V电源电压，设备自己转换为3.3V电源，具体如下：</p>
+<ul>
+<li><p>总线供电：器件使用 USB 线缆 VBUS 线上的电源。目前，这是为 USB 器件（如笔式驱动器、鼠标、键盘和较新的磁盘驱动器）供电的最常见方法。<br>总线供电：<br> <img src="https://img-blog.csdnimg.cn/20190717221729163.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>自供电：某些 USB 外设（如磁盘驱动器）所需电源超过了线缆所提供的电源。这些外设通常使用外部电源（这些电源通常为壁式电源适配器）。<br><img src="https://img-blog.csdnimg.cn/20190717221807990.png" alt="在这里插入图片描述"></p>
+</li>
+<li><p>混合电源：USB 器件可以自供电或由总线供电。这些器件比较罕见，并且通常需要多个电源。这个场景不是特别多，故暂不介绍。</p>
+</li>
+</ul>
+<h5 id="电源规范"><a href="#电源规范" class="headerlink" title="电源规范"></a>电源规范</h5><p>USB 2.0 主机在 5 V VBUS 线上提供了两种功耗水平：</p>
+<blockquote>
+<p>插入时的 100 毫安电流和运行期间的 500 毫安电流。</p>
+</blockquote>
+<ul>
+<li>USB规范为100 mA负载提供的 VBUS 范围为4.4 V到5.25 V;</li>
+<li>并且为500 mA 负载提供的 VBUS 范围为 4.75 V 到 5.25 V。</li>
+</ul>
+<p>USB 外设通常将该电压调节为 3.3 V，从而为器件提供最清洁的电源。在所有情况下，总线供电的集线器为下行端口提供 100 mA 的电流。一个外部供电的集线器能够为其自身的每个下行端口提供500 mA 的电源。</p>
+<h5 id="数据线"><a href="#数据线" class="headerlink" title="数据线"></a>数据线</h5><p><strong>数据线为差分结构的，差分阻抗需要保持为90Ω标准，且需要一直维持该阻抗保持不变。</strong></p>
+<p>D+和 D–走线的长度差异不应超过 50 mil（1.25 mm），从而可以避免信号时滞并防止对信号时序产生影响。</p>
+<p>数据线靠近源端需要串接28Ω~39Ω的电阻，用来实现阻抗匹配，因为源阻抗为CMOS输出，阻抗太小太小；</p>
+<p>信号电平以及驱动方式：<br>1)低速差分线，USB使用差分输出驱动器将USB数据信号驱动到USB电缆上。<br>驱动器在低电平状态下的静态输出摆幅必须低于VOL（最大值）0.3V，1.5k负载电压至3.6V，并且在高电平状态下必须高于2.8V的VOH（最小值），负载为15k。<br>2）全速差分线，全速驱动器有更严格的要求。差分高低状态之间的输出摆动必须很好地平衡，以最小化信号偏斜。需要对驱动器进行转换速率控制，以最大限度地降低辐射噪声和串扰。<br>3）高速差分线，差分线电平采用低电平传输，高电平为400mV，低电平为0+/-10mV，因为电平更低对应的信号上升时间越短。高速模式使用电流驱动，驱动大小为17.78mA。</p>
+<h5 id="屏蔽接地"><a href="#屏蔽接地" class="headerlink" title="屏蔽接地"></a>屏蔽接地</h5><p>需要通过一个电阻将 SHIELD 信号接地。这样有助于隔离该信号并降低 EMI 和 RFI 辐射。尽量将该电阻放置在靠近USB 连接器的位置。可能需要进行一些试验，从而获得正确的数值。<br>但是一般我们直接是连接在一起的和信号地，因为本身而言不是长距离的话影响不大。</p>
+<h5 id="数据参考地"><a href="#数据参考地" class="headerlink" title="数据参考地"></a>数据参考地</h5><p>数据参考地一般直接连接整块主板的大地，可以获得更好的信号完整性和EMI特性。<br>这个地最好是连续的，且是很大面积的。<br>如下所示：<br><img src="https://img-blog.csdnimg.cn/20190717222223920.png" alt="在这里插入图片描述"></p>
+<h4 id="USB-HUB-集线器"><a href="#USB-HUB-集线器" class="headerlink" title="USB HUB-集线器"></a>USB HUB-集线器</h4><p>集线器是USB即插即用架构的关键元素。集线器用于从用户的角度简化USB连接，并以低成本复杂度提供稳健性。<br> <img src="https://img-blog.csdnimg.cn/20190717222243847.png" alt="在这里插入图片描述"></p>
+<p>集线器的上游端口将集线器连接到主机。集线器的每个下游端口都允许连接到另一个集线器或功能。集线器可以检测每个下游端口的连接和分离，并能够为下游设备分配电力。每个下游端口都可以单独启用并连接到全速或低速设备。集线器将低速端口与全速信令隔离开来。<br>集线器由两部分组成：集线器控制器和集线器中继器。</p>
+<p>集线器中继器是上游端口和下游端口之间的协议控制交换机。它还具有复位和挂起/恢复信令的硬件支持。主机控制器提供允许与主机通信的接口寄存器。</p>
+<h4 id="标准内芯线的类别"><a href="#标准内芯线的类别" class="headerlink" title="标准内芯线的类别"></a>标准内芯线的类别</h4><p>前面第一列为标准的线芯描述，数字越大表示线芯越细，后面描述的是线的直流阻抗/100米，线越粗，阻抗越小。</p>
+<p>所以并不是所有的线径都是满足USB协议的，那些仅仅是可以使用的，况且实际上很多便宜的USB数据线是没有屏蔽层的，这种线可能导致电磁干扰，表现最明显的就是充电时，屏幕操作失灵。<br><img src="https://img-blog.csdnimg.cn/20190717222327540.png" alt="在这里插入图片描述"></p>
+<h4 id="USB插入检测"><a href="#USB插入检测" class="headerlink" title="USB插入检测"></a>USB插入检测</h4><h5 id="全速设备识别"><a href="#全速设备识别" class="headerlink" title="全速设备识别"></a>全速设备识别</h5><p>全速设备识别，全速设备是在数据线D+上连接上拉电阻，上拉电阻阻值为1.5K，上拉电压为3.3V，在初始上电时控制器通过D+上拉识别到该设备是全速设备，请注意上拉电阻不得小于900Ω，控制器端下拉电阻是15K。<br> <img src="https://img-blog.csdnimg.cn/20190717222537473.png" alt="在这里插入图片描述"></p>
+<h5 id="低速设备识别"><a href="#低速设备识别" class="headerlink" title="低速设备识别"></a>低速设备识别</h5><p>低速设备识别，低速设备是在数据线D-上连接上拉电阻，上拉电阻阻值为1.5K，上拉电压为3.3V，在初始上电时控制器通过D-上拉识别到该设备是全速设备，请注意上拉电阻不得小于900Ω，控制器端下拉电阻是15K。<br><img src="https://img-blog.csdnimg.cn/20190717222557711.png" alt="在这里插入图片描述"> </p>
+<h5 id="高速设备识别"><a href="#高速设备识别" class="headerlink" title="高速设备识别"></a>高速设备识别</h5><p>高速设备识别与全速设备前期基本一致，但是高速设备初始是上拉到3.3V的，后续内部有可控制的开关断开此连接，所以，后续判定为高速设备。进而进入高速设备模式。<br> <img src="https://img-blog.csdnimg.cn/20190717222623174.png" alt="在这里插入图片描述"></p>
+<h4 id="USB设备驱动电路"><a href="#USB设备驱动电路" class="headerlink" title="USB设备驱动电路"></a>USB设备驱动电路</h4><h5 id="高速设备驱动电路"><a href="#高速设备驱动电路" class="headerlink" title="高速设备驱动电路"></a>高速设备驱动电路</h5><p>为了在高速模式下发送，收发器激活从其正电源电压导出的内部电流源，并通过高速电流转向开关将该电流引导到两条数据线之一。<br>这样，收发器在电缆上产生高速J或K状态。<br>将该电流动态切换到D +或D-线遵循在低速或全速操作中使用的相同NRZI数据编码方案以及位填充行为。为了发信号通知J，电流被引导到D +线，并且为了发信号通知K，电流被引导到D-线。SYNC字段和EOP分隔符已针对高速模式进行了修改。<br><img src="https://img-blog.csdnimg.cn/2019071722271031.png" alt="在这里插入图片描述"> </p>
+<h5 id="低速和全速设备驱动"><a href="#低速和全速设备驱动" class="headerlink" title="低速和全速设备驱动"></a>低速和全速设备驱动</h5><p>低速和全速使用的是3.3V电平标准，请保证输出阻抗匹配传输阻抗，所以建议串联电阻为28Ω到44Ω大小。<br><img src="https://img-blog.csdnimg.cn/20190717222741179.png" alt="在这里插入图片描述"> </p>
+<h4 id="数据编码方式"><a href="#数据编码方式" class="headerlink" title="数据编码方式"></a>数据编码方式</h4><p>USB在发送数据包时采用NRZI数据编码。 在NRZI编码中，“1”表示级别没有变化，“0”表示级别变化。高电平表示显示NRZI编码的本图和后续图中数据线上的J状态。一串零会导致NRZI数据切换每个位时间。 一串1导致长周期而数据没有转换。<br><img src="https://img-blog.csdnimg.cn/20190717222759756.png" alt="在这里插入图片描述"></p>
+<h4 id="USB电路设计"><a href="#USB电路设计" class="headerlink" title="USB电路设计"></a>USB电路设计</h4><p><strong>USB电路设计请注意：</strong><br>错误：USB数据速率很高，所以我们设计中可能见到USB Host直接经过电阻分叉之后给到两个USB设备，这种做法是及其错误的，就目前而言，信号质量一定会受到影响，切记不得已不要这样设计！！！</p>
+<p>正确：使用USB专用器件来实现兼容或分叉设计，此时需要使用USB Switch或者USB Bridge。</p>
+<p>以下为USB电路设计，如果看不清可以看参考最后一个链接；<br><img src="https://img-blog.csdnimg.cn/20190717223207657.png" alt="在这里插入图片描述"></p>
+<p>1）U28是过流保护器件，USB协议中规定USB端口供电5V，电流500mA，超过该值要能实现关断输出，另外在负载短路时也能实现关断，所以使用该器件，该器件叫做负载开关芯片。<br>2）L11是共模电感，共模电流会导致EMC测试中的辐射测试超标，差分信号不平衡将会导致该情况发生，所以增加共模电感，来减小/阻碍共模电流。<br>3）U29是静电防护器件，因为USB端口我们会使用手插入USB设备，可能导致电源、数据线上有静电放电，用该器件来保护CPU端口。<br>4）Vbus上的电容，这是因为USB设备插入时瞬间电流较大，则可能导致Vbus电压下降，此时需要满足标准规定，所以增加电容来稳定电压。<br>5）FB13是信号地和外壳屏蔽地之间的隔离磁珠，磁珠是耗能原件，来消耗掉不需要的干扰高频信号，直流下基本上没作用。<br>6）J19是USB端子，可能是电脑那种的USB母头，也可能是手机上的Micro USB接口。<br>7）USB输出靠近CPU侧放置小电阻的作用是源端阻抗匹配，具体可见我其他博文。<br>8）在USB靠近端子侧放置电阻是静电防护作用，因为有时候静电防护器件还没起作用，就要靠这个电阻起作用了。</p>
+<h4 id="常见问题与解决办法"><a href="#常见问题与解决办法" class="headerlink" title="常见问题与解决办法"></a>常见问题与解决办法</h4><p><img src="https://img-blog.csdnimg.cn/20190717224302709.png" alt="在这里插入图片描述"></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>1、赛普拉斯 USB检索：<br><a href="https://www.cypress.com/search/all/USB?sort_by=search_api_relevance&amp;f%5B0%5D=meta_type%3Atechnical_documents&amp;f%5B1%5D=field_related_products%3A1341&amp;page=18" target="_blank" rel="noopener">https://www.cypress.com/search/all/USB?sort_by=search_api_relevance&amp;f%5B0%5D=meta_type%3Atechnical_documents&amp;f%5B1%5D=field_related_products%3A1341&amp;page=18</a></p>
+<p>2、赛普拉斯 USB 眼图：<br><a href="https://www.cypress.com/file/126176/download" target="_blank" rel="noopener">https://www.cypress.com/file/126176/download</a></p>
+<p>3、赛普拉斯 USB电路：<br><a href="https://www.cypress.com/file/180466/download" target="_blank" rel="noopener">https://www.cypress.com/file/180466/download</a></p>
+<p>4、TI  USB相关：<br><a href="http://www.ti.com.cn/tool/cn/tidep0013?keyMatch=USB2%200&amp;tisearch=Search-CN-Everything" target="_blank" rel="noopener">http://www.ti.com.cn/tool/cn/tidep0013?keyMatch=USB2%200&amp;tisearch=Search-CN-Everything</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt="LiuPeng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Interface/" rel="tag"># Interface</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/" rel="next" title="固态存储介绍">
+                <i class="fa fa-chevron-left"></i> 固态存储介绍
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="LiuPeng" />
+            
+              <p class="site-author-name" itemprop="name">LiuPeng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MarvellousLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liupmarvellous@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/LUOHUATINGYUSHENG" target="_blank" title="CSDN_Blog">
+                      
+                        <i class="fa fa-fw fa-jsfiddle"></i>CSDN_Blog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://e2echina.ti.com/members/4749764" target="_blank" title="TI_China">
+                      
+                        <i class="fa fa-fw fa-steam"></i>TI_China</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#USB物理层介绍及电路设计注意事项"><span class="nav-number">1.</span> <span class="nav-text">USB物理层介绍及电路设计注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#USB-Universal-Serial-Bus"><span class="nav-number">1.1.</span> <span class="nav-text">USB-Universal Serial Bus</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bus-拓扑"><span class="nav-number">1.2.</span> <span class="nav-text">Bus 拓扑</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB信号"><span class="nav-number">1.3.</span> <span class="nav-text">USB信号</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Vbus"><span class="nav-number">1.3.1.</span> <span class="nav-text">Vbus</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#电源规范"><span class="nav-number">1.3.2.</span> <span class="nav-text">电源规范</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据线"><span class="nav-number">1.3.3.</span> <span class="nav-text">数据线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#屏蔽接地"><span class="nav-number">1.3.4.</span> <span class="nav-text">屏蔽接地</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据参考地"><span class="nav-number">1.3.5.</span> <span class="nav-text">数据参考地</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB-HUB-集线器"><span class="nav-number">1.4.</span> <span class="nav-text">USB HUB-集线器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准内芯线的类别"><span class="nav-number">1.5.</span> <span class="nav-text">标准内芯线的类别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB插入检测"><span class="nav-number">1.6.</span> <span class="nav-text">USB插入检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#全速设备识别"><span class="nav-number">1.6.1.</span> <span class="nav-text">全速设备识别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#低速设备识别"><span class="nav-number">1.6.2.</span> <span class="nav-text">低速设备识别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高速设备识别"><span class="nav-number">1.6.3.</span> <span class="nav-text">高速设备识别</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB设备驱动电路"><span class="nav-number">1.7.</span> <span class="nav-text">USB设备驱动电路</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#高速设备驱动电路"><span class="nav-number">1.7.1.</span> <span class="nav-text">高速设备驱动电路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#低速和全速设备驱动"><span class="nav-number">1.7.2.</span> <span class="nav-text">低速和全速设备驱动</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据编码方式"><span class="nav-number">1.8.</span> <span class="nav-text">数据编码方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#USB电路设计"><span class="nav-number">1.9.</span> <span class="nav-text">USB电路设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见问题与解决办法"><span class="nav-number">1.10.</span> <span class="nav-text">常见问题与解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">1.11.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiuPeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'o5bWyMWaPNrNuLkLlXhcAbOF-gzGzoHsz',
+        appKey: 'Sk8QIfWvtOcxwt8ppjEBQf0c',
+        placeholder: 'Just go go',
+        avatar:'identicon',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
