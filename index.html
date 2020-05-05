@@ -252,12 +252,12 @@
   
   
 
-  <article class="post post-type-about" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/05/about/">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiuPeng">
@@ -276,7 +276,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/05/about/" itemprop="url">about</a></h1>
+                <a class="post-title-link" href="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/" itemprop="url">固态存储介绍</a></h1>
         
 
         <div class="post-meta">
@@ -288,8 +288,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-04T22:06:25Z">
-                2020-05-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-05T09:26:25Z">
+                2020-05-05
               </time>
             
 
@@ -299,6 +299,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E5%AE%B9%E9%87%8F%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">大容量存储</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -307,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/05/05/about/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/05/about/" itemprop="commentCount"></span>
+                <a href="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -338,7 +360,43 @@
       
         
           
-            
+            <p>﻿## 固态硬盘介绍</p>
+<p>常见的，我们见到的硬盘是固态硬盘和机械硬盘，近来固态硬盘似乎成为了主流，其空间容量大、速度快被人们喜爱，所以大概介绍下固态硬盘。</p>
+<p>如果要了解机械硬盘知识，可看我之前的博客：</p>
+<p>1.<a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/97973550" target="_blank" rel="noopener">机械硬盘介绍</a></p>
+<h4 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h4><p>注意固态硬盘是属于以下分类的非易失性存储中的Flash分类。而我们常见的固态硬盘是使用Nand Flash作为存储的，什么是Nand Flash，可以见我之前的博文：</p>
+<p>1.<a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/89296469" target="_blank" rel="noopener">Nand Flash之并行与串行</a></p>
+<p><a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/89292920" target="_blank" rel="noopener">2.NAND Flash标准之ONFI VS TOGGLE</a></p>
+<p><strong>存储分类如下：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20190804103849799.png" alt="存储分类"></p>
+<h4 id="固态硬盘"><a href="#固态硬盘" class="headerlink" title="固态硬盘"></a>固态硬盘</h4><p>固态硬盘-Solid State Drive。固态硬盘主要就是如下几个部分构成：</p>
+<ul>
+<li><p>IO口连接器：一般是Sata、有部分是PCIe接口；</p>
+</li>
+<li><p>SSD控制器：这个很多厂商都在做，但是老美和台湾省做的比较好；</p>
+</li>
+<li><p>闪存：这个一般就是Nnad了，当然除此之外还有一些Nand的衍生产品。</p>
+</li>
+<li><p>外壳：外壳一般就是固定PCB板的壳子，形式多样。</p>
+</li>
+</ul>
+<p>  <img src="https://img-blog.csdnimg.cn/20190804104554551.png" alt="固态硬盘"></p>
+<p>  简单理解就是：<br>  <strong>接口+主控+存储器</strong></p>
+<p>  <img src="https://img-blog.csdnimg.cn/20190804110846461.png" alt="在这里插入图片描述"></p>
+<h4 id="固态硬盘表现"><a href="#固态硬盘表现" class="headerlink" title="固态硬盘表现"></a>固态硬盘表现</h4><p>固态硬盘（SSD）和硬盘驱动器（HDD）的物理规格相似，但它们以非常不同的方式存储数据。硬盘驱动器和固态驱动器之间的区别在于用于存储和检索数据的技术。HDD利用磁盘作为存储，而SSD利用存储器。</p>
+<p><img src="https://img-blog.csdnimg.cn/2019080411151929.png" alt="在这里插入图片描述"></p>
+<p>二者比较：</p>
+<ul>
+<li>SSD的性能远远优于HDD。</li>
+<li>SSD比HDD具有更耐用和抗故障，因为所有部件都是固定的，不像HDD包含移动部件并且易受损坏。</li>
+<li>HDD消耗的功率大于SSD消耗的功率，其原因在于HDD使用能量消耗电机来实现其功能。</li>
+<li>SSD的访问时间适用于较小的文件，数据传输速率可以在100 MB / s到600 MB / s之间。相反，HDD访问时间比SSD慢10倍。它提供大约140 MB / s的数据传输速率，但是，大文件不会降低其性能。</li>
+<li>SSD的寻道时间和旋转延迟优于HDD，并且启动时间也较短。</li>
+<li>SSD比HDD贵，并且与相同数量的HDD相比，它提供的存储容量更少。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190804111801909.png" alt="在这里插入图片描述"></p>
+<p>所以，大家看自己的需求，具体选择什么，价格因素肯定要考虑的，且请注意，机械硬盘数据恢复比固态硬盘要容易得多，固态硬盘数据一旦出现问题，则很难找回。</p>
+
           
         
       
@@ -945,7 +1003,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -956,7 +1014,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

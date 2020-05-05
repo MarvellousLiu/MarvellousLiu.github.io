@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="UFS," />
+  <meta name="keywords" content="RAM," />
 
 
 
@@ -77,25 +77,23 @@
 
 
 
-<meta name="description" content="下一代存储技术介绍-UFSUFSUniversal Flash Storage，即就是UFS。此内存扩展标准是UFSHCI标准JESD223的扩展。UFSHCI标准定义了UFS驱动程序和UFS主机控制器之间的接口。除寄存器接口外，它还定义了系统内存中的数据结构，用于交换数据，控制和状态信息。此外，UFSHCI标准定义了这些层内的协议层结构和抽象实体。通用内存可以将设备内部工作内存移动到系统内存中，">
+<meta name="description" content="## 固态硬盘介绍 常见的，我们见到的硬盘是固态硬盘和机械硬盘，近来固态硬盘似乎成为了主流，其空间容量大、速度快被人们喜爱，所以大概介绍下固态硬盘。 如果要了解机械硬盘知识，可看我之前的博客： 1.机械硬盘介绍 存储器注意固态硬盘是属于以下分类的非易失性存储中的Flash分类。而我们常见的固态硬盘是使用Nand Flash作为存储的，什么是Nand Flash，可以见我之前的博文： 1.Nand">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UFS--新一代高速存储">
-<meta property="og:url" content="https://marvellousliu.github.io/2020/04/28/ufs/index.html">
+<meta property="og:title" content="固态存储介绍">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="LiuPeng&quot;s Blog">
-<meta property="og:description" content="下一代存储技术介绍-UFSUFSUniversal Flash Storage，即就是UFS。此内存扩展标准是UFSHCI标准JESD223的扩展。UFSHCI标准定义了UFS驱动程序和UFS主机控制器之间的接口。除寄存器接口外，它还定义了系统内存中的数据结构，用于交换数据，控制和状态信息。此外，UFSHCI标准定义了这些层内的协议层结构和抽象实体。通用内存可以将设备内部工作内存移动到系统内存中，">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707104529837.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707105705732.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707105855754.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707105920436.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707105945788.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707110045162.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190707110125488.png">
-<meta property="article:published_time" content="2020-04-27T21:22:29.000Z">
-<meta property="article:modified_time" content="2020-04-27T14:54:05.975Z">
+<meta property="og:description" content="## 固态硬盘介绍 常见的，我们见到的硬盘是固态硬盘和机械硬盘，近来固态硬盘似乎成为了主流，其空间容量大、速度快被人们喜爱，所以大概介绍下固态硬盘。 如果要了解机械硬盘知识，可看我之前的博客： 1.机械硬盘介绍 存储器注意固态硬盘是属于以下分类的非易失性存储中的Flash分类。而我们常见的固态硬盘是使用Nand Flash作为存储的，什么是Nand Flash，可以见我之前的博文： 1.Nand">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190804103849799.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190804104554551.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190804110846461.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019080411151929.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190804111801909.png">
+<meta property="article:published_time" content="2020-05-05T09:26:25.000Z">
+<meta property="article:modified_time" content="2020-05-05T01:32:03.303Z">
 <meta property="article:author" content="LiuPeng">
-<meta property="article:tag" content="UFS">
+<meta property="article:tag" content="RAM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190707104529837.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190804103849799.png">
 
 
 
@@ -125,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="https://marvellousliu.github.io/2020/04/28/ufs/"/>
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/05/固态存储介绍/"/>
 
 
 
 
 
-  <title>UFS--新一代高速存储 | LiuPeng"s Blog</title>
+  <title>固态存储介绍 | LiuPeng"s Blog</title>
   
 
 
@@ -268,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/04/28/ufs/">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiuPeng">
@@ -285,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UFS--新一代高速存储</h1>
+          <h1 class="post-title" itemprop="name headline">固态存储介绍</h1>
         
 
         <div class="post-meta">
@@ -297,8 +295,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-28T05:22:29+08:00">
-                2020-04-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-05T17:26:25+08:00">
+                2020-05-05
               </time>
             
 
@@ -320,8 +318,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%AB%98%E9%80%9F%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">高速存储</span>
+                  <a href="/categories/%E5%A4%A7%E5%AE%B9%E9%87%8F%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">大容量存储</span>
                   </a>
                 </span>
 
@@ -338,8 +336,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/28/ufs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/28/ufs/" itemprop="commentCount"></span>
+                <a href="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,44 +365,42 @@
       
 
       
-        <h3 id="下一代存储技术介绍-UFS"><a href="#下一代存储技术介绍-UFS" class="headerlink" title="下一代存储技术介绍-UFS"></a>下一代存储技术介绍-UFS</h3><h4 id="UFS"><a href="#UFS" class="headerlink" title="UFS"></a>UFS</h4><p>Universal Flash Storage，即就是UFS。此内存扩展标准是UFSHCI标准JESD223的扩展。UFSHCI标准定义了UFS驱动程序和UFS主机控制器之间的接口。除寄存器接口外，它还定义了系统内存中的数据结构，用于交换数据，控制和状态信息。此外，UFSHCI标准定义了这些层内的协议层结构和抽象实体。<br>通用内存可以将设备内部工作内存移动到系统内存中，从而降低整体系统成本并提高设备性能。</p>
-<h4 id="UFS最新一代UFS3-0"><a href="#UFS最新一代UFS3-0" class="headerlink" title="UFS最新一代UFS3.0"></a>UFS最新一代UFS3.0</h4><p>UFS 3.0专为需要高性能和低功耗的移动应用和计算系统而开发，是首款引入MIPI M-PHY HS-Gear4的标准，每通道数据速率高达11.6 Gbps，性能比先前版本规范(UFS2.0)高2倍。</p>
-<blockquote>
-<p>UFS 3.0包括两个专门针对汽车市场推出的功能：能够在扩展温度范围内工作和刷新操作。</p>
-</blockquote>
-<p>UFS是一种高性能接口，设计用于需要最小化功耗的应用，包括智能手机和平板电脑等移动系统以及汽车应用。<br>其高速串行接口和优化协议可显着提高吞吐量和系统性能。</p>
-<p><strong>速率提升的根本原因：</strong></p>
-<p>为了实现最高性能和最节能的数据传输，UFS利用MIPI®Alliance的业界领先规范来形成其互连层。此协作继续使用UFS 3.0版，该版本引用了MIPI M-PHY®v4.1物理层规范和最近发布的MIPI UniProSM v1.8传输层规范。</p>
-<p>JEDEC标准官网：<a href="https://www.jedec.org/news/pressreleases/jedec-publishes-universal-flash-storage-ufs-ufshci-version-30-and-ufs-card" target="_blank" rel="noopener">https://www.jedec.org/news/pressreleases/jedec-publishes-universal-flash-storage-ufs-ufshci-version-30-and-ufs-card</a></p>
-<blockquote>
-<p>JEDEC：JEDEC即 固态技术协会是微电子产业的领导标准机构。在过去50余年的时间里，JEDEC所制定的标准为全行业所接受和采纳。作为一个全球性组织，JEDEC的会员构成是跨国性的。JEDEC 不隶属于任何一个国家或政府实体。但是华为被制裁时间明显指出，这是一家美国的附属组织。</p>
-</blockquote>
-<h4 id="UFS替代谁"><a href="#UFS替代谁" class="headerlink" title="UFS替代谁"></a>UFS替代谁</h4><p>请注意UFS存储是用来为下一代存储而发展的相关技术，其性能比较是和eMMC来比较的，并不是和NAND Flash比较，因为eMMC是NAND的进化版本，其性能来讲eMMC是秒杀Nand Flahs的；而eMMC的协议已经多年未更新了，且eMMC的数据时序标准似乎到达瓶颈，所以很难再有新的发展了，而且并行8总线的eMMC因为需要并行-串行转换，所以速率很难提升上去。而串行方式的UFS变成新的趋势了，其简单连接以及高速率，现在看来会在未来一段时间称为新的存储趋势。</p>
-<h4 id="数据传输形式："><a href="#数据传输形式：" class="headerlink" title="数据传输形式："></a>数据传输形式：</h4><ul>
-<li>eMMC为半双工结构，同一时间下只能读取或者写入，但是UFS是全双工结构，既可以读取又可以写入。</li>
-<li>UFS使用的是差分传输结构，而eMMC使用的是单线传输形式需要考虑噪声容限等指标，且信号电平要高于UFS，因此速率受限不如UFS。</li>
-</ul>
-<p><strong>具体的速率比较如下，eMMC与UFS：</strong><br>eMMC与UFS相比，其总线数量太多，但最终处理都是要变为串行机器码的，所以如果eMMC协议没有革新，则被UFS取代只是时间问题。况且因为温度导致的时序飘移等情况，在eMMC5.1版本下，为了优化在HS400模式下这个问题，专门增加了strobe这个引脚来自适应时序对其，如果eMMC再升高传输模式，则就需要做出新的改变。故从14年之后目前没有新的eMMC标准出来了。</p>
-<p><em>请注意，以下的速率是当前一些产品平均可以实际达到的速率，并不是标准规范的速率：</em><br><img src="https://img-blog.csdnimg.cn/20190707104529837.png" alt="UFS与eMMC速率"></p>
-<p><strong>具体的速率比较如下，eMMC、UFS与SATA：</strong></p>
-<p>UFS、eMMC、SATA性能比较，图中比较的是最高的理论速率，所以实际的物理连接速率可能低于此值，具体看配置（以下的SATA 为 X2的总线形式，当然总线越多速率越高）。</p>
-<p><em>请注意如下是标准规定可以达到的最高速率：</em></p>
-<p><img src="https://img-blog.csdnimg.cn/20190707105705732.png" alt="在这里插入图片描述"></p>
-<h4 id="eMMC与UFS总线传输形式"><a href="#eMMC与UFS总线传输形式" class="headerlink" title="eMMC与UFS总线传输形式"></a>eMMC与UFS总线传输形式</h4><p>总线传输形式不一样，虽然都是同步传输方式，即就是都需要时钟信号作为参考；</p>
+        <p>﻿## 固态硬盘介绍</p>
+<p>常见的，我们见到的硬盘是固态硬盘和机械硬盘，近来固态硬盘似乎成为了主流，其空间容量大、速度快被人们喜爱，所以大概介绍下固态硬盘。</p>
+<p>如果要了解机械硬盘知识，可看我之前的博客：</p>
+<p>1.<a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/97973550" target="_blank" rel="noopener">机械硬盘介绍</a></p>
+<h4 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h4><p>注意固态硬盘是属于以下分类的非易失性存储中的Flash分类。而我们常见的固态硬盘是使用Nand Flash作为存储的，什么是Nand Flash，可以见我之前的博文：</p>
+<p>1.<a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/89296469" target="_blank" rel="noopener">Nand Flash之并行与串行</a></p>
+<p><a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/89292920" target="_blank" rel="noopener">2.NAND Flash标准之ONFI VS TOGGLE</a></p>
+<p><strong>存储分类如下：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20190804103849799.png" alt="存储分类"></p>
+<h4 id="固态硬盘"><a href="#固态硬盘" class="headerlink" title="固态硬盘"></a>固态硬盘</h4><p>固态硬盘-Solid State Drive。固态硬盘主要就是如下几个部分构成：</p>
 <ul>
-<li>eMMC使用8条数据总线做复用（地址和数据，发送和接收），外加命令线以及新增的STROBE线；需要的IO口很多，比较复杂；</li>
-<li>UFS需要两组差分线，一条是时钟线就可以了，并且是双向数据发送接收，全双工；IO口配置也比较简单，就像USB3.0一样。</li>
+<li><p>IO口连接器：一般是Sata、有部分是PCIe接口；</p>
+</li>
+<li><p>SSD控制器：这个很多厂商都在做，但是老美和台湾省做的比较好；</p>
+</li>
+<li><p>闪存：这个一般就是Nnad了，当然除此之外还有一些Nand的衍生产品。</p>
+</li>
+<li><p>外壳：外壳一般就是固定PCB板的壳子，形式多样。</p>
+</li>
 </ul>
-<p><strong>如下所示：</strong><br><img src="https://img-blog.csdnimg.cn/20190707105855754.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190707105920436.png" alt="在这里插入图片描述"></p>
-<p>更详细的连接描述：<br><img src="https://img-blog.csdnimg.cn/20190707105945788.png" alt="在这里插入图片描述"></p>
-<h4 id="UFS传输协议："><a href="#UFS传输协议：" class="headerlink" title="UFS传输协议："></a>UFS传输协议：</h4><p>UFS卡架构基于最先进的行业验证协议：移动行业处理器接口（MIPI）的M-PHY和UniPro，物理层和链路层采用JEDEC联盟标准，命令层采用SCSI命令。<br>UFS使用UniPro作为数据链路层。 UniPro仅支持点对点链接，因为它们需要设备所需的最高数据速率。<br>UFS主机UniPro IP的主要组件是AXI接口，UFS主机控制器接口，UFS传输协议层（UTP），传输层，网络层，数据链路层，PHY适配器层和M-PHY。</p>
-<p><strong>如下图所示：</strong><br><img src="https://img-blog.csdnimg.cn/20190707110045162.png" alt="在这里插入图片描述"></p>
-<h4 id="从实际的物理信号传输比较"><a href="#从实际的物理信号传输比较" class="headerlink" title="从实际的物理信号传输比较"></a>从实际的物理信号传输比较</h4><p><strong>UFS相比于eMMC的优势：</strong></p>
-<p>1）抗EMI和串扰<br>如果从差分导体外部引入EMI或串扰，则将其同等地添加到反相和非反相信号。<br>因此，接收器电路极大地降低了干扰或串扰的幅度。<br>2）降低EMI和串扰<br>差分对中的两个信号产生（理想情况下）幅度相等但极性相反的电磁场。<br>这适用于UFS卡，并确保两个导体的发射在很大程度上相互抵消。<br>3）更好的信噪比<br>UFS卡中的差分信号可以使用较低的电压，并且由于提高了抗噪声性能，仍然保持足够的信噪比（SNR），而SD卡中的单端信号需要稳定的高电压以确保足够的SNR。<br>4）接收器电路的复杂性降低<br>将差分信号集成到UFS卡中，确定逻辑状态更简单，<br>就像比较反相和非反相信号的电压一样。<br>然而，在SD卡的单端系统中，接收器电路更复杂，应考虑参考电压的值以及变化和容差。<br>5）专业物理/链接和命令层的优点</p>
-<p><strong>UFS应用电路：</strong></p>
-<p>下图显示了UFS卡的推荐原理图，其中包含所有信号连接和无源元件。<br>1）连接在CLK线上的电阻的目的是通过阻尼减少信号失真和EMI。<br>作为切换信号的CLK提供高功率谱，因此，阻尼电阻可以通过降低CLK信号的转换速率来降低现象。根据系统环境，该值可在0到47Ω之间选择。从实际角度来看，如果CLK迹线被布线为带状线或在内层，则可以去除串联阻尼电阻。<br>2）电源电容<br>电源引脚电容用来退耦以及储能。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190707110125488.png" alt="在这里插入图片描述"></p>
-<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p>1.<a href="http://en.siliconmotion.com/EW_Pages/Ferri-UFS_whitepaper.pdf" target="_blank" rel="noopener">http://en.siliconmotion.com/EW_Pages/Ferri-UFS_whitepaper.pdf</a><br>2.<a href="http://www.teeltech.com/wp-content/uploads/2017/05/Teel-Tech-Dediprog-Brochure.pdf" target="_blank" rel="noopener">http://www.teeltech.com/wp-content/uploads/2017/05/Teel-Tech-Dediprog-Brochure.pdf</a></p>
+<p>  <img src="https://img-blog.csdnimg.cn/20190804104554551.png" alt="固态硬盘"></p>
+<p>  简单理解就是：<br>  <strong>接口+主控+存储器</strong></p>
+<p>  <img src="https://img-blog.csdnimg.cn/20190804110846461.png" alt="在这里插入图片描述"></p>
+<h4 id="固态硬盘表现"><a href="#固态硬盘表现" class="headerlink" title="固态硬盘表现"></a>固态硬盘表现</h4><p>固态硬盘（SSD）和硬盘驱动器（HDD）的物理规格相似，但它们以非常不同的方式存储数据。硬盘驱动器和固态驱动器之间的区别在于用于存储和检索数据的技术。HDD利用磁盘作为存储，而SSD利用存储器。</p>
+<p><img src="https://img-blog.csdnimg.cn/2019080411151929.png" alt="在这里插入图片描述"></p>
+<p>二者比较：</p>
+<ul>
+<li>SSD的性能远远优于HDD。</li>
+<li>SSD比HDD具有更耐用和抗故障，因为所有部件都是固定的，不像HDD包含移动部件并且易受损坏。</li>
+<li>HDD消耗的功率大于SSD消耗的功率，其原因在于HDD使用能量消耗电机来实现其功能。</li>
+<li>SSD的访问时间适用于较小的文件，数据传输速率可以在100 MB / s到600 MB / s之间。相反，HDD访问时间比SSD慢10倍。它提供大约140 MB / s的数据传输速率，但是，大文件不会降低其性能。</li>
+<li>SSD的寻道时间和旋转延迟优于HDD，并且启动时间也较短。</li>
+<li>SSD比HDD贵，并且与相同数量的HDD相比，它提供的存储容量更少。</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20190804111801909.png" alt="在这里插入图片描述"></p>
+<p>所以，大家看自己的需求，具体选择什么，价格因素肯定要考虑的，且请注意，机械硬盘数据恢复比固态硬盘要容易得多，固态硬盘数据一旦出现问题，则很难找回。</p>
 
       
     </div>
@@ -446,7 +442,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UFS/" rel="tag"># UFS</a>
+            <a href="/tags/RAM/" rel="tag"># RAM</a>
           
         </div>
       
@@ -459,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="next" title="EEPROM与Flash的区别">
-                <i class="fa fa-chevron-left"></i> EEPROM与Flash的区别
+              <a href="/2020/04/28/ufs/" rel="next" title="UFS--新一代高速存储">
+                <i class="fa fa-chevron-left"></i> UFS--新一代高速存储
               </a>
             
           </div>
@@ -468,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/05/%E5%9B%BA%E6%80%81%E5%AD%98%E5%82%A8%E4%BB%8B%E7%BB%8D/" rel="prev" title="固态存储介绍">
-                固态存储介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -638,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#下一代存储技术介绍-UFS"><span class="nav-number">1.</span> <span class="nav-text">下一代存储技术介绍-UFS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#UFS"><span class="nav-number">1.1.</span> <span class="nav-text">UFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UFS最新一代UFS3-0"><span class="nav-number">1.2.</span> <span class="nav-text">UFS最新一代UFS3.0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UFS替代谁"><span class="nav-number">1.3.</span> <span class="nav-text">UFS替代谁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传输形式："><span class="nav-number">1.4.</span> <span class="nav-text">数据传输形式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#eMMC与UFS总线传输形式"><span class="nav-number">1.5.</span> <span class="nav-text">eMMC与UFS总线传输形式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UFS传输协议："><span class="nav-number">1.6.</span> <span class="nav-text">UFS传输协议：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从实际的物理信号传输比较"><span class="nav-number">1.7.</span> <span class="nav-text">从实际的物理信号传输比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference："><span class="nav-number">1.8.</span> <span class="nav-text">Reference：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储器"><span class="nav-number">1.</span> <span class="nav-text">存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#固态硬盘"><span class="nav-number">2.</span> <span class="nav-text">固态硬盘</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#固态硬盘表现"><span class="nav-number">3.</span> <span class="nav-text">固态硬盘表现</span></a></li></ol></div>
             
 
           </div>
