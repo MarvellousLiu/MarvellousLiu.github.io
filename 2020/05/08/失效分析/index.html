@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="热设计," />
+  <meta name="keywords" content="失效分析," />
 
 
 
@@ -77,20 +77,17 @@
 
 
 
-<meta name="description" content="芯片温升估算与实际测试现在设备越来越趋于小型化设计，也就是单位体积下热功耗变大。但是电子产品最大的问题就是温度，大部分的电子用的时间长了，就会发热，电池也会随着使用时间越久，电池就会变得不耐用。 温度过高会使得电子产品的绝缘性能退化，元器件也会渐渐的损坏，材料变得老化。一般而言，过高的温度会使得电阻降低，这也是其的使用寿命会变短的原因。电子产品里面的变压器等其他的材料都会受到高温的影响，性能下降，">
+<meta name="description" content="失效分析失效分析的总章与目录。 失效分析基础   l 可靠性工作的目的，失效分析的理论基础、工作思路    l 术语定义与解释：失效、缺陷、失效分析、失效模式、失效机理、应力……    l 失效分析的问题来源、入手点、输出物、相关标准 失效分析技术方法A、失效分析的原则 B、失效分析程序 l 完整的故障处理流程  l 整机和板级故障分析技术程序  l 元器件级失效分析技术程序（工作过程和具体的方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="芯片温升与实际测试">
-<meta property="og:url" content="https://marvellousliu.github.io/2020/05/07/%E8%8A%AF%E7%89%87%E6%B8%A9%E5%8D%87%E4%B8%8E%E5%AE%9E%E9%99%85%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="失效分析">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/08/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="LiuPeng&quot;s Blog">
-<meta property="og:description" content="芯片温升估算与实际测试现在设备越来越趋于小型化设计，也就是单位体积下热功耗变大。但是电子产品最大的问题就是温度，大部分的电子用的时间长了，就会发热，电池也会随着使用时间越久，电池就会变得不耐用。 温度过高会使得电子产品的绝缘性能退化，元器件也会渐渐的损坏，材料变得老化。一般而言，过高的温度会使得电阻降低，这也是其的使用寿命会变短的原因。电子产品里面的变压器等其他的材料都会受到高温的影响，性能下降，">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191230191919876.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20191230192137261.png">
-<meta property="article:published_time" content="2020-05-06T21:02:45.000Z">
-<meta property="article:modified_time" content="2020-05-06T13:08:07.032Z">
+<meta property="og:description" content="失效分析失效分析的总章与目录。 失效分析基础   l 可靠性工作的目的，失效分析的理论基础、工作思路    l 术语定义与解释：失效、缺陷、失效分析、失效模式、失效机理、应力……    l 失效分析的问题来源、入手点、输出物、相关标准 失效分析技术方法A、失效分析的原则 B、失效分析程序 l 完整的故障处理流程  l 整机和板级故障分析技术程序  l 元器件级失效分析技术程序（工作过程和具体的方法">
+<meta property="article:published_time" content="2020-05-07T20:50:24.000Z">
+<meta property="article:modified_time" content="2020-05-07T12:54:12.747Z">
 <meta property="article:author" content="LiuPeng">
-<meta property="article:tag" content="热设计">
+<meta property="article:tag" content="失效分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191230191919876.png">
 
 
 
@@ -120,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/07/芯片温升与实际测试/"/>
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/08/失效分析/"/>
 
 
 
 
 
-  <title>芯片温升与实际测试 | LiuPeng"s Blog</title>
+  <title>失效分析 | LiuPeng"s Blog</title>
   
 
 
@@ -263,7 +260,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/07/%E8%8A%AF%E7%89%87%E6%B8%A9%E5%8D%87%E4%B8%8E%E5%AE%9E%E9%99%85%E6%B5%8B%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/08/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiuPeng">
@@ -280,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">芯片温升与实际测试</h1>
+          <h1 class="post-title" itemprop="name headline">失效分析</h1>
         
 
         <div class="post-meta">
@@ -292,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-07T05:02:45+08:00">
-                2020-05-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-08T04:50:24+08:00">
+                2020-05-07
               </time>
             
 
@@ -315,8 +312,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%83%AD%E8%AE%BE%E8%AE%A1%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index">
-                    <span itemprop="name">热设计相关</span>
+                  <a href="/categories/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index">
+                    <span itemprop="name">失效分析相关</span>
                   </a>
                 </span>
 
@@ -333,8 +330,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/05/07/%E8%8A%AF%E7%89%87%E6%B8%A9%E5%8D%87%E4%B8%8E%E5%AE%9E%E9%99%85%E6%B5%8B%E8%AF%95/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/07/%E8%8A%AF%E7%89%87%E6%B8%A9%E5%8D%87%E4%B8%8E%E5%AE%9E%E9%99%85%E6%B5%8B%E8%AF%95/" itemprop="commentCount"></span>
+                <a href="/2020/05/08/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/08/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -362,34 +359,160 @@
       
 
       
-        <h3 id="芯片温升估算与实际测试"><a href="#芯片温升估算与实际测试" class="headerlink" title="芯片温升估算与实际测试"></a>芯片温升估算与实际测试</h3><p>现在设备越来越趋于小型化设计，也就是单位体积下热功耗变大。但是电子产品最大的问题就是温度，大部分的电子用的时间长了，就会发热，电池也会随着使用时间越久，电池就会变得不耐用。</p>
-<p>温度过高会使得电子产品的绝缘性能退化，元器件也会渐渐的损坏，材料变得老化。一般而言，过高的温度会使得电阻降低，这也是其的使用寿命会变短的原因。电子产品里面的变压器等其他的材料都会受到高温的影响，性能下降，机械强度也会随之降低，电极电流的增加，使得温度进一步升高，最后使得元器件功能失效。</p>
-<h4 id="LDO芯片产品"><a href="#LDO芯片产品" class="headerlink" title="LDO芯片产品"></a>LDO芯片产品</h4><p>LDO是我们消费品电子等很多设备中都会用到的器件，因此对这个器件做热计算相关分析。<br><img src="https://img-blog.csdnimg.cn/20191230191919876.png" alt="在这里插入图片描述"></p>
-<h4 id="结温估算"><a href="#结温估算" class="headerlink" title="结温估算"></a>结温估算</h4><p>请注意，我们以LM1117芯片，封装为SOT223封装来计算。（封装会影响LDO的热阻大小，热阻会导致器件产生温升）。<br><img src="https://img-blog.csdnimg.cn/20191230192137261.png" alt="在这里插入图片描述"></p>
-<p>R<del>θJA</del>：这个指的是从芯片内部晶圆到空气的热阻大小；</p>
-<p>R<del>θJC(top)</del>：这个指的是从芯片内部晶圆到器件上表面的热阻大小；</p>
-<h5 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h5><p>我们估算是用R<del>θJA</del>来估算的，具体如下：</p>
-<p>T<del>J</del>-T<del>A</del>=R<del>θJA</del>* P<del>D</del></p>
-<p>上式中：</p>
-<ul>
-<li>T<del>J</del>是芯片结温；</li>
-<li>T<del>A</del>是环境温度</li>
-<li>P<del>D</del>是功耗</li>
-</ul>
-<p>例如：LDO的输入是9V，输出是5V，负载电流大小是200mA，环境温度是25摄氏度，则此时的芯片结温估计是？<br>（1）芯片功耗P<del>D</del>=（9-5）* 200=0.8w    不考虑Iq电流<br>（2）T<del>J</del>=T<del>A</del>+R<del>θJA</del>*P<del>D</del>=25+61.6 * 0.8=74.28摄氏度。</p>
-<p>基于此，可以计算芯片在125摄氏度或者150摄氏度下的最大功耗是多少。</p>
-<h4 id="结温精确测试"><a href="#结温精确测试" class="headerlink" title="结温精确测试"></a>结温精确测试</h4><p>我们估算是用R<del>θJC</del>来计算的，具体如下：</p>
-<p>T<del>J</del>-T<del>C</del>=R<del>θJC</del>* P<del>D</del></p>
-<p>上式中：</p>
-<ul>
-<li>T<del>J</del>是芯片结温；</li>
-<li>T<del>C</del>是芯片上表面温度</li>
-<li>P<del>D</del>是功耗</li>
-</ul>
-<p>例如：LDO的输入是9V，输出是5V，负载电流大小是200mA，环境温度是25摄氏度，则此时的芯片结温估计是？<br>（1）芯片功耗P<del>D</del>=（9-5）* 200=0.8w    不考虑Iq电流</p>
-<p>（2）T<del>J</del>=T<del>C</del>+R<del>θJC</del>*P<del>D</del>=T<del>C</del>+61.6 * 0.8=当前功率下结温。</p>
-<p>基于此，再使用热电偶或者红外测试仪测试出来芯片上表面温度T<del>C</del>，就可以计算芯片当前的结温温度。</p>
-<h4 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h4><p>因为空气扰度等原因，在使用空气计算或者估算芯片结温时误差比较大，因此需要精确计算结温，需要用到芯片上表面温度。</p>
+        <h3 id="失效分析"><a href="#失效分析" class="headerlink" title="失效分析"></a>失效分析</h3><p>失效分析的总章与目录。</p>
+<h4 id="失效分析基础"><a href="#失效分析基础" class="headerlink" title="失效分析基础"></a>失效分析基础</h4><p>   l 可靠性工作的目的，失效分析的理论基础、工作思路</p>
+<p>   l 术语定义与解释：失效、缺陷、失效分析、失效模式、失效机理、应力……</p>
+<p>   l 失效分析的问题来源、入手点、输出物、相关标准</p>
+<h4 id="失效分析技术方法"><a href="#失效分析技术方法" class="headerlink" title="失效分析技术方法"></a>失效分析技术方法</h4><p>A、失效分析的原则</p>
+<p>B、失效分析程序</p>
+<pre><code>l 完整的故障处理流程
+
+l 整机和板级故障分析技术程序
+
+l 元器件级失效分析技术程序（工作过程和具体的方法手段介绍）</code></pre><p>C、失效信息收集的方法与具体工作内容</p>
+<pre><code>l 如何确定失效信息收集的关注点
+
+l 样品信息需要包括的内容
+
+l 失效现场外部信息的内容
+
+l 信息收集表格示例
+
+l 信息收集为后面技术分析工作贡献的示例</code></pre><p>D、外观检查</p>
+<pre><code>l 外观检查应该关注的哪些方面
+
+l 外观检查发现问题示例
+
+l 外观检查的仪器设备工具</code></pre><p>E、电学测试</p>
+<pre><code>l 如何用电测验证失效模式和预判失效机理
+
+l 电测的具体方法
+
+l 几种典型电测结果的机理解析
+
+l 电测时复现间歇性失效现象的示例
+
+l 在电测中如何利用外部应力与失效机理的关联
+
+l 电测的常用仪器设备</code></pre><p>F、X－RAY</p>
+<pre><code>l X-RAY的工作原理与设备技术指标
+
+l 不同材料的不透明度比较
+
+l X-RAY的用途
+
+l X-RAY在失效分析中的示例
+
+l X-RAY的优缺点
+
+l X-RAY与C-SAM的比较</code></pre><p>G、C-SAM</p>
+<pre><code>l C-SAM的工作原理与设备技术指标
+
+l C-SAM的特点与用途
+
+l C-SAM、X-RAY在失效分析中联合应证的使用示例
+
+l C-SAM的优缺点</code></pre><p>H、密封器件物理分析</p>
+<pre><code>l PIND介绍
+
+l 气密性分析介绍
+
+l 内部气氛分析介绍
+
+I、开封制样
+
+l 化学开封的方法、设备、技术要点介绍
+
+l 化学开封发现器件内部失效点的示例
+
+l 切片制样的具体方法与步骤
+
+l 切片制样发现器件和焊点内部失效点的示例</code></pre><p>J、芯片剥层</p>
+<pre><code>l 化学腐蚀法去除钝化层的具体方法，及其特点与风险
+
+l 等离子腐蚀去除钝化层的具体方法，及其特点与风险
+
+l 腐蚀钝化层后样品观察区的形貌示例
+
+l 去除金属化层的具体方法与示例</code></pre><p>K、失效定位－SEM</p>
+<pre><code>l SEM的工作原理与设备特点
+
+l 光学显微镜与SEM的性能比较
+
+l 光学显微镜与SEM具体成像区别示例</code></pre><p>L、失效定位－成份分析</p>
+<pre><code>l 成份分析中的技术关注点经验
+
+l EDS、AES、XPS、SIMS、FTIR等成份分析仪器的用法比较
+
+l 成份分析在器件内部分析中的作用示例</code></pre><p>M、内部热分析－红外热相</p>
+<p>N、内部漏电分析－EMMI</p>
+<p>O、芯片内部线路验证－FIB</p>
+<p>P、综合分析与结论</p>
+<pre><code>l 综合分析中的逻辑思维能力
+
+l 结论的特点与正确使用</code></pre><p>Q、验证与改进建议</p>
+<pre><code>l 根本原因排查与验证
+
+l 改进建议及效果跟踪</code></pre><h4 id="各类失效机理的归纳讲解与相应案例分析"><a href="#各类失效机理的归纳讲解与相应案例分析" class="headerlink" title="各类失效机理的归纳讲解与相应案例分析"></a>各类失效机理的归纳讲解与相应案例分析</h4><p>1、失效分析全过程案例</p>
+<pre><code>A、失效信息收集与分析            
+
+B、思路分析
+
+C、过程方法                      
+
+D、逻辑推导
+
+E、试验手段                       
+
+F、综合分析
+
+G、结论与建议</code></pre><p>2、静电放电失效机理讲解与案例分析</p>
+<pre><code>A、静电损伤的原理               
+
+B、静电损伤的三种模型讲解
+
+C、静电损伤的途径               
+
+D、静电放电的失效模式
+
+E、静电放电的失效机理           
+
+F、静电损害的特点
+
+G、静电损伤的案例（比较器、单片机、微波器件、发光管、功率管）</code></pre><p>3、闩锁失效机理讲解与案例分析</p>
+<pre><code>A、闩锁损坏器件的原理           
+
+B、闩锁损坏器件的特征
+
+C、闩锁损坏器件的案例（开关器件、驱动器件等）
+
+D、闩锁与端口短路的比较         
+
+E、CMOS电路引起闩锁的外部条件
+
+F、静电与闩锁的保护设计</code></pre><p>4、过电失效类失效机理讲解与案例分析</p>
+<pre><code>A、过电的类型及特点（浪涌、过电压、过电流、过功率等）
+
+B、对应不同类型的过电的失效案例</code></pre><p>5、机械应力类失效机理讲解与案例分析</p>
+<pre><code>A、机械应力常见的损伤类型</code></pre><p> 6、热变应力类失效机理讲解与案例分析</p>
+<pre><code>A、热变应力损伤的类型和特征</code></pre><p> 7、结构缺陷类失效机理讲解与案例分析</p>
+<pre><code>A、热结构缺陷的类型和特征         
+
+B、发现缺陷的技术手段</code></pre><p>8、材料缺陷类失效机理讲解与案例分析</p>
+<pre><code>A、绕线材料缺陷                   
+
+B、钝化材料缺陷
+
+C、引线材料缺陷                   
+
+D、簧片材料缺陷</code></pre><p>9、工艺缺陷类失效机理讲解与案例分析</p>
+<pre><code>A、工艺缺陷的类型和主要特征，发现手段</code></pre><p>10、应用设计缺陷类失效机理讲解与案例分析</p>
+<p>11、污染腐蚀类失效机理讲解与案例分析</p>
+<pre><code>A、污染的来源与类型，腐蚀的主要原理</code></pre><p>12、元器件固有机理类失效机理讲解与案例分析</p>
+<pre><code>A、不同类型的元器件固有失效机理的归纳</code></pre><p>13、面目全非的样品的分析</p>
+<p>来自于—工业和信息化部电子工业标准化研究院</p>
+<p>《电子产品及元器件失效分析技术与经典案例解析》专题研讨</p>
+<p><a href="http://www.cesi.cn/page/index.html" target="_blank" rel="noopener">http://www.cesi.cn/page/index.html</a></p>
 
       
     </div>
@@ -431,7 +554,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%83%AD%E8%AE%BE%E8%AE%A1/" rel="tag"># 热设计</a>
+            <a href="/tags/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/" rel="tag"># 失效分析</a>
           
         </div>
       
@@ -444,8 +567,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/07/%E6%95%A3%E7%83%AD%E7%89%87%E9%80%89%E5%9E%8B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="next" title="散热片选型注意事项">
-                <i class="fa fa-chevron-left"></i> 散热片选型注意事项
+              <a href="/2020/05/07/5G/" rel="next" title="5G WiFi频段介绍">
+                <i class="fa fa-chevron-left"></i> 5G WiFi频段介绍
               </a>
             
           </div>
@@ -453,10 +576,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/05/07/5G/" rel="prev" title="5G WiFi频段介绍">
-                5G WiFi频段介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -623,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#芯片温升估算与实际测试"><span class="nav-number">1.</span> <span class="nav-text">芯片温升估算与实际测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LDO芯片产品"><span class="nav-number">1.1.</span> <span class="nav-text">LDO芯片产品</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结温估算"><span class="nav-number">1.2.</span> <span class="nav-text">结温估算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#计算"><span class="nav-number">1.2.1.</span> <span class="nav-text">计算</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结温精确测试"><span class="nav-number">1.3.</span> <span class="nav-text">结温精确测试</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总述"><span class="nav-number">1.4.</span> <span class="nav-text">总述</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#失效分析"><span class="nav-number">1.</span> <span class="nav-text">失效分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#失效分析基础"><span class="nav-number">1.1.</span> <span class="nav-text">失效分析基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#失效分析技术方法"><span class="nav-number">1.2.</span> <span class="nav-text">失效分析技术方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#各类失效机理的归纳讲解与相应案例分析"><span class="nav-number">1.3.</span> <span class="nav-text">各类失效机理的归纳讲解与相应案例分析</span></a></li></ol></li></ol></div>
             
 
           </div>
