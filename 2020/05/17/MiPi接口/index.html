@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#1E90FF">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+
+
+  <meta name="keywords" content="MiPi," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Mobile Industry Processor Interface  MIPIMIPIMobile Industry Processor Interface 简称MIPI；MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。 The MIPI® AllianceMIPI联盟成立于2003年，是移动行业发展的关键时刻。当时供应商预见了智能多媒体手机令人激动">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MiPi接口">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/17/MiPi%E6%8E%A5%E5%8F%A3/index.html">
+<meta property="og:site_name" content="LiuPeng&quot;s Blog">
+<meta property="og:description" content="Mobile Industry Processor Interface  MIPIMIPIMobile Industry Processor Interface 简称MIPI；MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。 The MIPI® AllianceMIPI联盟成立于2003年，是移动行业发展的关键时刻。当时供应商预见了智能多媒体手机令人激动">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190015287.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190205451.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190422272.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190528324.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190613486.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020042119064218.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190757553.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190827727.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421190947390.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/202004211910157.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421191104883.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200421191216808.png">
+<meta property="article:published_time" content="2020-05-16T20:46:23.000Z">
+<meta property="article:modified_time" content="2020-05-16T12:56:48.632Z">
+<meta property="article:author" content="LiuPeng">
+<meta property="article:tag" content="MiPi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200421190015287.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/17/MiPi接口/"/>
+
+
+
+
+
+  <title>MiPi接口 | LiuPeng"s Blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">LiuPeng"s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">世间唯有爱与科技不可辜负</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/17/MiPi%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LiuPeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LiuPeng"s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MiPi接口</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-17T04:46:23+08:00">
+                2020-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%AB%98%E9%80%9F%E6%80%BB%E7%BA%BF%E6%8E%A5%E5%8F%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">高速总线接口</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/05/17/MiPi%E6%8E%A5%E5%8F%A3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/17/MiPi%E6%8E%A5%E5%8F%A3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Mobile-Industry-Processor-Interface-MIPI"><a href="#Mobile-Industry-Processor-Interface-MIPI" class="headerlink" title="Mobile Industry Processor Interface  MIPI"></a>Mobile Industry Processor Interface  MIPI</h2><h4 id="MIPI"><a href="#MIPI" class="headerlink" title="MIPI"></a>MIPI</h4><p>Mobile Industry Processor Interface 简称MIPI；MIPI（移动产业处理器接口）是MIPI联盟发起的为移动应用处理器制定的开放标准和一个规范。</p>
+<h4 id="The-MIPI®-Alliance"><a href="#The-MIPI®-Alliance" class="headerlink" title="The MIPI® Alliance"></a>The MIPI® Alliance</h4><p>MIPI联盟成立于2003年，是移动行业发展的关键时刻。当时供应商预见了智能多媒体手机令人激动人心的市场，但基本接口技术的分散化阻碍了产品设计和开发。由ARM，诺基亚，ST和德州仪器（TI）组成的四家公司成立了该组织，以整合界面，鼓励其使用并在业界推动移动设备创新。</p>
+<p><strong>目前董事会成员：</strong><br><img src="https://img-blog.csdnimg.cn/20200421190015287.png" alt="在这里插入图片描述"><br>MIPI联盟是一个标准组织，旨在促进移动设计中的硬件和软件标准化，以简化众多不同且快速变化的技术的集成。该联盟的使命是通过建立移动设备内的硬件和软件接口标准来使整个移动行业受益。联盟认为，开放性和标准化推动了移动设备的市场增长，并解决了设计人员，开发人员和制造商当前面临的众多障碍。</p>
+<p>目前，有250多家成员公司积极参与联盟，制定规范以提高处理器和外围设备接口的一致性，促进移动设备的重用性和兼容性。</p>
+<h4 id="MIPI的特点"><a href="#MIPI的特点" class="headerlink" title="MIPI的特点"></a>MIPI的特点</h4><p>MIPI它产生的规格可最大程度地重复利用设计，推动创新并缩短所有参与者的产品上市时间。与其他数字标准（例如USB或PCIe）相反，是整体的即包含协议层和物理（PHY）层，大多数高速MIPI标准都没有，即不同的协议驻留在同一公共PHY层上。</p>
+<h4 id="MIPI的应用"><a href="#MIPI的应用" class="headerlink" title="MIPI的应用"></a>MIPI的应用</h4><p>移动行业处理器接口（MIPI®）标准定义了设计移动设备的行业规范，比如智能手机、平板电脑、便携式电脑和混合设备。MIPI 接口在 5G 移动设备、互联汽车和物联网（IoT）解决方案中，具有极其重要的战略作用。</p>
+<h4 id="MIPI物理层规范"><a href="#MIPI物理层规范" class="headerlink" title="MIPI物理层规范"></a>MIPI物理层规范</h4><p>MIPI 标准定义了三种独特的物理层（PHY）规范，分别如下：<br>1、MIPI D-PHY；<br>2、MIPI M-PHY ；<br>3、MIPI C-PHY。</p>
+<p>MIPI D-PHY 和 C-PHY 物理层支持摄像和显示应用；<br>M-PHY则是更高性能的摄像、存储和 “芯片到芯片（chip-to-chip）” 的应用；</p>
+<h4 id="MIPI联盟规范"><a href="#MIPI联盟规范" class="headerlink" title="MIPI联盟规范"></a>MIPI联盟规范</h4><p>CSI-3和UFS使用UniPro协议栈层，以黄色表示为M-PHY与相机、显示器；M-PHY与UFS；M-PHY与Inter Processor更高层协议层（如M-PCIe）之间的中间接口。<br><img src="https://img-blog.csdnimg.cn/20200421190205451.png" alt="在这里插入图片描述"></p>
+<p>MIPI的多媒体协议，如下图包含相机、显示器、触摸屏、UFS存储、音视频的应用。<br>注：UFS是新一代存储，旨在替换eMMC的应用。关于USB想要了解的可以查看我之前的博文：</p>
+<p><a href="https://blog.csdn.net/LUOHUATINGYUSHENG/article/details/94624348?ops_request_misc=%7B%22request_id%22:%22158746698419724835817500%22,%22scm%22:%2220140713.130102334.pc_blog.%22%7D&request_id=158746698419724835817500&biz_id=0&utm_source=distribute.pc_search_result.none-task-blog-2~blog~first_rank_v2~rank_v25-1" target="_blank" rel="noopener">UFS存储介绍</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200421190422272.png" alt="在这里插入图片描述"></p>
+<h4 id="C-PHY和D-PHY的差异"><a href="#C-PHY和D-PHY的差异" class="headerlink" title="C-PHY和D-PHY的差异"></a>C-PHY和D-PHY的差异</h4><p><strong>D-PHY</strong>是一种串行接口技术，它使用带差分信号的可扩展数据通道和带宽有限的通道以及源同步时钟来支持带宽受限的通道，以支持用于显示器和照相机等流应用的节能接口。<br>它为受益于此的应用程序提供半双工行为双向通信，传输速率高达每通道2.5吉比特（2.5Gbps）。</p>
+<p><strong>C-PHY</strong>需要很少的传输介质通道，不需要单独的时钟通道，并提供了灵活性，可以通过软件控制将任意通道的任意组合分配给应用处理器上的任何端口。<br>由于基本电气规范的相似性，C-PHY和D-PHY可以在同一设备引脚上实现。三相符号编码技术在每个通道的三线导体组上每个符号提供大约2.28位。这样可以以较低的触发频率实现更高的数据速率，从而进一步降低功耗。</p>
+<p>下面为两者连接对比图，可以看到两者差异：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421190528324.png" alt="在这里插入图片描述"><br>D-PHY的配置，需要时钟差分线路做同步使用；</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421190613486.png" alt="在这里插入图片描述"></p>
+<p>C-PHY，无需使用时钟作参考；</p>
+<p><img src="https://img-blog.csdnimg.cn/2020042119064218.png" alt="在这里插入图片描述"></p>
+<h4 id="PHY对应的测试项"><a href="#PHY对应的测试项" class="headerlink" title="PHY对应的测试项"></a>PHY对应的测试项</h4><p><strong>M-PHY</strong><br>M-PHY是具有超高带宽功能的嵌入式时钟串行接口技术，专门针对移动应用程序的极端性能和低功耗要求而开发。</p>
+<p>M-PHY当前支持以下协议：<br>CSI-3，UFS，DigRF，UniPro，LLI，SSIC和M-PCIe。</p>
+<p>这些不同的协议涵盖从高级相机到高速存储器的应用，在这些应用中，低引脚数，通道可扩展性和电源效率是最重要的要求。高M-PHY数据速率以及多通道测试以及大量的一致性测试要求使得验证M-PHY层成为一项挑战。为了完全测试该层的功能，必须对发送器（Tx）和接收器（Rx）进行表征。发射机确认正在检查设备/ DUT是否正在正确发送信号。示波器用于显示/显示结果。</p>
+<p>另一方面，接收器位于传输链的末端。到达其输入的信号通常会降级并携带杂质。这些杂质可能来自相关的变送器，也可能在从TX到RX的过程中被吸收。信号降级主要是由于信道损耗。 RX在接收器压力测试期间仍然能够正确检测数字内容。</p>
+<p><strong>MIPI D-PHY</strong><br>D-PHY是一种用于带宽受限通道的PHY层接口技术，如今已被诸如串行显示接口（DSI）和相机串行接口（CSI）协议之类的流应用程序使用。</p>
+<p>它具有支持可扩展性的多通道体系结构。当工作在高速模式下时，它使用具有差分信令和源同步时钟的NRZ数据格式。后者允许它调整数据传输速率以匹配视频帧大小和速率的要求。通过这种和无端接的低功耗模式，它具有很高的功耗效率。<br>从低功耗到高速模式（反之亦然）的过渡阶段中的时序测量在D-PHY接口上得到了强调，这是因为接收器终端的开-关切换，因此为了使接口正常工作，信号必须满足许多时序要求。D-PHY测试的其他挑战是低速和高速信号的共同存在。</p>
+<p><strong>MIPI C-PHY</strong><br>MIPI C-PHY是串行总线，支持与D-PHY相同的显示和摄像头接口。</p>
+<p>高速模式下的C-PHY数据传输使用3级3线方案，形成一个通道，每个符号可以传输2.28位。与D-PHY相比，这可以提供更高的数据速率，而无需增加触发速率和功耗。C-PHY时钟被嵌入或编码到数据中。与D-PHY相比，这节省了两条线以及相关的电源。</p>
+<p>数据编码可确保在每个符号边界处都有过渡，从而可以实现基于逻辑（非PLL）的RX时钟恢复，从而保留了D-PHY的数据速率灵活性。</p>
+<p>通过将时钟嵌入数据，它还提供了灵活性，可以将任意组合的任意通道分配给任何端口通过软件控制在应用程序处理器上。</p>
+<p>由于基本电气规范（以及整个低功耗模式）的相似性，C-PHY和D-PHY可以在同一器件引脚上实现。</p>
+<h4 id="早期的PHY速率大小"><a href="#早期的PHY速率大小" class="headerlink" title="早期的PHY速率大小"></a>早期的PHY速率大小</h4><p>D-PHY的速率是要小于C-PHY的速率，M-PHY的速率也是较小的，但是都存在高配置的版本。（如下是C-PHY-1.0、D-PHY1.2、M-PHY3.1版本的比较）</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421190757553.png" alt="在这里插入图片描述"></p>
+<h4 id="协议测试（Specification）"><a href="#协议测试（Specification）" class="headerlink" title="协议测试（Specification）"></a>协议测试（Specification）</h4><p>对您的移动计算设计有广泛而深刻的见解。协议验证主要发生在接口层。具有MIPI规范的物理（PHY）层支持许多不同的协议。<br>包含：CSI-2，DSI-1，DigRF，CSI-3，UFS，UniPro，SSIC和MPCIe都有不同的协议要求和测试。<br><img src="https://img-blog.csdnimg.cn/20200421190827727.png" alt="在这里插入图片描述"></p>
+<h4 id="MIPI相关协议（Specification）"><a href="#MIPI相关协议（Specification）" class="headerlink" title="MIPI相关协议（Specification）"></a>MIPI相关协议（Specification）</h4><p>注：以下的协议是会员才可以获得的，普通用户并没有直接的权限来获取到这些文件的，且在Bing上检索也无法获取，只能获取极少的相关信息，无法得到协议原文。只有极少数是公开版本，但是需要一系列注册才可以。</p>
+<p><strong>Audio</strong><br>MIPI SLIMbus® v2.0 (18-Nov-2015)<br>MIPI SoundWire® v1.2 (22-Apr-2019)</p>
+<p><strong>Camera &amp; Imaging</strong><br>MIPI CCS℠ v1.1, MIPI Camera Command Set (12-Dec-2019)<br>MIPI CSI-2℠ v3.0, MIPI Camera Serial Interface 2 (10-Sep-2019)<br>MIPI CSI-3℠ v1.1, MIPI Camera Serial Interface 3 (12-Mar-2014)<br>MIPI CPI℠ v1.0, MIPI Camera Parallel Interface (23-Mar-2004)<br>MIPI CSI℠ v1.0, MIPI Camera Serial Interface (23-Mar-2004)</p>
+<p><strong>Chip-to-Chip/IPC</strong><br>MIPI DigRF℠ v4 v1.2 (4-Feb-2014)<br>MIPI Dual Mode℠ 2.5G / 3G RFIC v3.09.06 (05-Aug-2011)<br>MIPI LLI℠ v2.1, MIPI Low Latency Interface (07-Nov-2014)<br>MIPI UniPro℠ v1.8 (11-Jan-2018)</p>
+<p><strong>Control &amp; Data</strong><br>MIPI BIF℠ v1.1.1, MIPI Battery Interface (10-Mar-2015)<br>MIPI BIF℠ Hardware Abstraction Layer v1.0 (22-May-2013)<br>MIPI eTrak℠ v1.1, MIPI Envelope Tracking Interface (10-Sep-2014)<br>MIPI I3C® v1.1, MIPI Improved Inter Integrated Circuit (11-Dec-2019)<br>MIPI I3C Basic℠ v1.0 (8-Oct-2018)<br>MIPI RFFE℠ v2.1, MIPI RF Front-End Control Interface (23-April-2018)<br>MIPI SPMI℠ v2.0, MIPI System Power Management (28-Aug-2012)</p>
+<p><strong>Debug &amp; Trace</strong><br>MIPI Gigabit Debug for IPS v1.0 (29-Jul-2016)<br>MIPI Gigabit Debug for USB v1.1 (02-Mar-2018)<br>MIPI HTI v1.0, MIPI High-Speed Trace Interface (29-Jul-2016)<br>MIPI NIDnT℠ v1.2, MIPI Narrow Interface for Debug and Test (05-Dec-2017)<br>MIPI PTI℠ v2.0, MIPI Parallel Trace Interface (12-Oct-2011)<br>MIPI SPP℠ v2.0, MIPI SneakPeek Protocol (23-July-2019)<br>MIPI STP℠ v2.2, MIPI System Trace Protocol (11-Feb-2016)<br>MIPI SyS-T℠ v1.0, MIPI System Software – Trace (09-Apr-2018)<br>MIPI TWP℠ v1.1, MIPI Trace Wrapper Protocol (18-Dec-2014)</p>
+<p><strong>Display &amp; Touch</strong><br>MIPI ALI3C℠ v1.0, MIPI ALI3C℠ v1.0 (09-Apr-2018)<br>MIPI DBI℠ v1.0, MIPI Display Bus Interface (22-Mar-2004)<br>MIPI DBI-2℠, MIPI Display Bus Interface 2 (16-Nov-2005)<br>MIPI DCS℠ v1.4, MIPI Display Command Set (02-May-20186)<br>MIPI DPI-2℠ v2.00, MIPI Display Pixel Interface 2 (23-Jan-2006)<br>MIPI DPI℠ v1.0, MIPI Display Pixel Interface (23-Mar-2004)<br>MIPI DSI-2℠ v1.1, MIPI Display Serial Interface 2 (02-May-2018)<br>MIPI DSI℠ v1.3.1, MIPI Display Serial Interface (17-Dec-2015)<br>MIPI SDF℠ v1.0, MIPI Stereoscopic Display Formats (14-Mar-2012)<br>MIPI TCS℠ v1.0, MIPI Touch Command Set (09-Apr-2018)</p>
+<p><strong>Physical Layers</strong><br>MIPI C-PHY℠ v2.0 (09-Sep-2019)<br>MIPI D-PHY℠ v2.5 (17-Oct-2019)<br>MIPI M-PHY® v4.1 (28-Mar-2017)<br>MIPI HSI℠ v1.01, MIPI High-Speed Synchronous Serial Interface (25-Jan-2009)</p>
+<p><strong>Software Integration</strong><br>MIPI DDB℠ v1.0, MIPI Device Descriptor Block (12-Oct-2011)<br>MIPI DisCo℠ v1.0, MIPI Discovery and Configuration (DisCo) Specification (28-Dec-2016)<br>MIPI DisCo for I3C (18-Jun-2019)<br>MIPI DisCo for NIDnT (24-Oct-2017)<br>MIPI DisCo for SoundWire v1.0 (28-Mar-2017)<br>MIPI I3C℠ HCI℠ v1.0 (29-Sep-2017)</p>
+<h4 id="摄像头、相机部分实际应用"><a href="#摄像头、相机部分实际应用" class="headerlink" title="摄像头、相机部分实际应用"></a>摄像头、相机部分实际应用</h4><p>如下面的两个图所示，现在很多摄像头、相机部分的接口都是MIPI接口的，其适用性、普遍性都很好。</p>
+<p>第一个框图里面的CSI-2即就是描述的MIPI里面的 C-PHY部分的协议。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421190947390.png" alt="在这里插入图片描述"><br>以下是安霸公司的一款主控，主要用于监控领域，我们可以看到这个芯片的摄像机视频输入部分就是MIPI接口的。</p>
+<p><img src="https://img-blog.csdnimg.cn/202004211910157.png" alt="在这里插入图片描述"></p>
+<p>C-PHY最少需要三个引脚，而不是四个，并提供与D-PHY的逐针向后兼容性。设计人员可以实现独立的C-PHY，D-PHY或组合C / D-PHY选项，以确保长期的设计可行性。CSI-2协议包含传输和应用程序层，并且本机支持C-PHY，D-PHY或组合C / D-PHY。</p>
+<p>两种物理层选项的摄像机控制接口都是双向的，并且与I2C标准兼容。CSI-2规范定义了作为外围设备的相机与主机处理器（通常是基带应用引擎）之间的标准数据传输和控制接口。</p>
+<p><strong>如下是STMIPID02产品的实际应用</strong><br>STMIPID02是针对移动照相电话应用的双模式MIPI CSI-2 / SMIA CCP2解串器。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421191104883.png" alt="在这里插入图片描述"><br>CSI-2是通道可扩展的规范。需要比一个数据通道提供更多带宽的应用程序或那些试图避免高时钟速率的应用程序可以将数据路径扩展到两个，三个或四个通道，并在峰值总线带宽上获得近似线性的增加。</p>
+<p><strong>virtual channel</strong><br>虚拟信道标识符包含在数据标识符字节的两个MS位中。<br>数据类型值包含在数据标识符字节的六个LS位中。<br>虚拟通道标识符的目的是为交错在数据流中的不同数据流提供单独的通道。<br>虚拟通道标识符号在数据标识符字节的高两位中。<br>接收器监视虚拟频道标识符，并将交错的视频流解复用到其适当的频道。<br>最多支持四个数据流； 有效通道标识符的范围是0到3。<br>外设中的虚拟通道标识符必须是可编程的，以使主机处理器能够控制数据流的解复用方式。</p>
+<h4 id="个人观点"><a href="#个人观点" class="headerlink" title="个人观点"></a>个人观点</h4><p>综述，这些东西现在实际应用很多，但是我们只注意到了实际的应用，并未去关心这些相关的测试，应该来说，对于这些协议的测试才是最难的部分，但是目前我们只是关注的系统的性能，不会去关注每个接口的性能，所以这也是一个问题。就像我们使用监控，我们只会注意摄像的成像是否存在问题，软件的配置是否有问题，而不会去关心到底摄像头部分和CPU连接部分的数据速率到底怎么样？当然，如果成像是在是太差了，这个时候我们才可能去单独测试这一部分的物理层电信号性能测试。</p>
+<p>如下：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200421191216808.png" alt="在这里插入图片描述"></p>
+<p>对于MIPI接口的了解我只是了解了最初、最基本、最简单的一些概念，而且MIPI每年都会持续的改进、增加相关的协议，所以要想继续了解，需要多关注MIPI官网相关信息，才能更好地了解；除此之外，相关的测试机构应该对于MIPI的研究是要强于应用设计厂商的，大部分的厂商应该都是属于应用厂商，这样的话我们仅仅关心整个产品的性能，会忽视掉产品内部每个器件的性能，这对于设计师来讲是不利的，但是这也是实在的问题，因为从事设计人员是要在很短的时间把产品推向市场。所以还是要靠自己去学习新的知识，讲个笑话，实际上很多硬件设备公司都没有自己的示波器，应该都是租借的，且高精度超高带宽的更没有了，所以你拿什么来测试呢？</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>1.<a href="https://mipi.org/" target="_blank" rel="noopener">https://mipi.org/</a><br>2.<a href="https://www.mipi.org/current-specifications" target="_blank" rel="noopener">https://www.mipi.org/current-specifications</a><br>3.<a href="http://www.ti.com/lit/ds/symlink/sn65dphy440ss.pdf" target="_blank" rel="noopener">http://www.ti.com/lit/ds/symlink/sn65dphy440ss.pdf</a><br>4.<a href="https://www.st.com/resource/en/datasheet/stmipid02.pdf" target="_blank" rel="noopener">https://www.st.com/resource/en/datasheet/stmipid02.pdf</a></p>
+<p>2020</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt="LiuPeng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MiPi/" rel="tag"># MiPi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/08/%E5%A4%B1%E6%95%88%E5%88%86%E6%9E%90/" rel="next" title="失效分析">
+                <i class="fa fa-chevron-left"></i> 失效分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="LiuPeng" />
+            
+              <p class="site-author-name" itemprop="name">LiuPeng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/MarvellousLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:liupmarvellous@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/LUOHUATINGYUSHENG" target="_blank" title="CSDN_Blog">
+                      
+                        <i class="fa fa-fw fa-jsfiddle"></i>CSDN_Blog</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://e2echina.ti.com/members/4749764" target="_blank" title="TI_China">
+                      
+                        <i class="fa fa-fw fa-steam"></i>TI_China</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mobile-Industry-Processor-Interface-MIPI"><span class="nav-number">1.</span> <span class="nav-text">Mobile Industry Processor Interface  MIPI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI"><span class="nav-number">1.0.1.</span> <span class="nav-text">MIPI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#The-MIPI®-Alliance"><span class="nav-number">1.0.2.</span> <span class="nav-text">The MIPI® Alliance</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI的特点"><span class="nav-number">1.0.3.</span> <span class="nav-text">MIPI的特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI的应用"><span class="nav-number">1.0.4.</span> <span class="nav-text">MIPI的应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI物理层规范"><span class="nav-number">1.0.5.</span> <span class="nav-text">MIPI物理层规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI联盟规范"><span class="nav-number">1.0.6.</span> <span class="nav-text">MIPI联盟规范</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C-PHY和D-PHY的差异"><span class="nav-number">1.0.7.</span> <span class="nav-text">C-PHY和D-PHY的差异</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PHY对应的测试项"><span class="nav-number">1.0.8.</span> <span class="nav-text">PHY对应的测试项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#早期的PHY速率大小"><span class="nav-number">1.0.9.</span> <span class="nav-text">早期的PHY速率大小</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#协议测试（Specification）"><span class="nav-number">1.0.10.</span> <span class="nav-text">协议测试（Specification）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MIPI相关协议（Specification）"><span class="nav-number">1.0.11.</span> <span class="nav-text">MIPI相关协议（Specification）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#摄像头、相机部分实际应用"><span class="nav-number">1.0.12.</span> <span class="nav-text">摄像头、相机部分实际应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人观点"><span class="nav-number">1.0.13.</span> <span class="nav-text">个人观点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">1.0.14.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LiuPeng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'o5bWyMWaPNrNuLkLlXhcAbOF-gzGzoHsz',
+        appKey: 'Sk8QIfWvtOcxwt8ppjEBQf0c',
+        placeholder: 'Just go go',
+        avatar:'identicon',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
