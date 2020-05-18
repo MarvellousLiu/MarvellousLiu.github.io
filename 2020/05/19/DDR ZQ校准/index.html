@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="ROM," />
+  <meta name="keywords" content="SDRAM," />
 
 
 
@@ -77,25 +77,24 @@
 
 
 
-<meta name="description" content="EEPROMEEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。关于ROM、PROM、EPR">
+<meta name="description" content="DDR3 ZQ Calibration Introduction-翻译DDR3 ZQ校准为了实现更强大的系统操作，DDR3 SDRAM驱动器设计通过降低电容得到了增强，动态片上端接（ODT）和新的校准方案。电容减少来自于使用新的合并驱动器。使用新驱动程序，组成输出驱动程序的电路共享用于ODT。DDR2上使用单独的结构作为输出驱动器和终端阻抗。 合并驱动器（Merged Driver） 注：就是使用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EEPROM与Flash的区别">
-<meta property="og:url" content="https://marvellousliu.github.io/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="DDR ZQ校准">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/19/DDR%20ZQ%E6%A0%A1%E5%87%86/index.html">
 <meta property="og:site_name" content="LiuPeng&quot;s Blog">
-<meta property="og:description" content="EEPROMEEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。关于ROM、PROM、EPR">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708191144853.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2019070822080120.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221331466.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221403342.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221527471.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221633837.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190708221837723.png">
-<meta property="article:published_time" content="2020-04-26T21:40:19.000Z">
-<meta property="article:modified_time" content="2020-04-27T14:54:20.698Z">
+<meta property="og:description" content="DDR3 ZQ Calibration Introduction-翻译DDR3 ZQ校准为了实现更强大的系统操作，DDR3 SDRAM驱动器设计通过降低电容得到了增强，动态片上端接（ODT）和新的校准方案。电容减少来自于使用新的合并驱动器。使用新驱动程序，组成输出驱动程序的电路共享用于ODT。DDR2上使用单独的结构作为输出驱动器和终端阻抗。 合并驱动器（Merged Driver） 注：就是使用">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190513185915201.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190513190312615.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190513190652226.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190513190904182.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190513190942604.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019051319102161.png">
+<meta property="article:published_time" content="2020-05-18T21:20:10.000Z">
+<meta property="article:modified_time" content="2020-05-18T13:27:55.244Z">
 <meta property="article:author" content="LiuPeng">
-<meta property="article:tag" content="ROM">
+<meta property="article:tag" content="SDRAM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190708191144853.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190513185915201.png">
 
 
 
@@ -125,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://marvellousliu.github.io/2020/04/27/EEPROM与Flash的区别/"/>
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/19/DDR ZQ校准/"/>
 
 
 
 
 
-  <title>EEPROM与Flash的区别 | LiuPeng"s Blog</title>
+  <title>DDR ZQ校准 | LiuPeng"s Blog</title>
   
 
 
@@ -268,7 +267,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/19/DDR%20ZQ%E6%A0%A1%E5%87%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiuPeng">
@@ -285,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EEPROM与Flash的区别</h1>
+          <h1 class="post-title" itemprop="name headline">DDR ZQ校准</h1>
         
 
         <div class="post-meta">
@@ -297,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-27T05:40:19+08:00">
-                2020-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-19T05:20:10+08:00">
+                2020-05-18
               </time>
             
 
@@ -320,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E5%AE%B9%E9%87%8F%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">小容量存储</span>
+                  <a href="/categories/DDR%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">DDR存储</span>
                   </a>
                 </span>
 
@@ -338,8 +337,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/" itemprop="commentCount"></span>
+                <a href="/2020/05/19/DDR%20ZQ%E6%A0%A1%E5%87%86/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/19/DDR%20ZQ%E6%A0%A1%E5%87%86/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -367,35 +366,27 @@
       
 
       
-        <h3 id="EEPROM"><a href="#EEPROM" class="headerlink" title="EEPROM"></a>EEPROM</h3><h4 id="EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"><a href="#EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。" class="headerlink" title="EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"></a>EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。</h4><h6 id="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><a href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。" class="headerlink" title="注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"></a>注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</h6><p>关于ROM、PROM、EPROM的区别请查看百度百科：<a href="https://baike.baidu.com/item/ROM/310411?fr=aladdin" target="_blank" rel="noopener">ROM</a></p>
-<h4 id="EEPROM的特性"><a href="#EEPROM的特性" class="headerlink" title="EEPROM的特性"></a>EEPROM的特性</h4><ul>
-<li>支持标准和快速I2C协议、兼容SPI总线</li>
-<li>1~256K的高密度存储</li>
-<li>1.8V~6V的款电压操作范围</li>
-<li>对全部存储器进行硬件写保护</li>
-<li>采用低功耗CMOS工艺</li>
-<li>可编程/擦除100万次</li>
-<li>数据保存期100年</li>
-<li>工业温度范围</li>
-</ul>
-<h4 id="EEPROM接口"><a href="#EEPROM接口" class="headerlink" title="EEPROM接口"></a>EEPROM接口</h4><h5 id="IIC"><a href="#IIC" class="headerlink" title="IIC"></a>IIC</h5><p>IIC接口的EEPROM很常见，因为IIC接口十分通用也很简单，只需要两个IO口以及上拉电阻就行了。（历史原因是IIC总线发展比较早，很早就普遍使用了，所以IIC的接口普及率高，EEPROM使用就很常见了。</p>
-<h6 id="IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><a href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。" class="headerlink" title="IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。"></a>IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</h6><p><img src="https://img-blog.csdnimg.cn/20190708191144853.png" alt="IIC接口的EEPROM"></p>
-<h5 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a>SPI</h5><p>SPI接口的EEPROM是为了应对IIC速率不高而解决的，因为IIC速率最高到1MHz（3.2MHz）速率，为了提高读取速度故发展出来了SPI接口的EEPROM。</p>
-<h6 id="EEPROM最高可以达到20MHz。"><a href="#EEPROM最高可以达到20MHz。" class="headerlink" title="EEPROM最高可以达到20MHz。"></a>EEPROM最高可以达到20MHz。</h6><p><img src="https://img-blog.csdnimg.cn/2019070822080120.png" alt="SPI接口EEPROM"></p>
-<h5 id="除此之外还有MicroWire"><a href="#除此之外还有MicroWire" class="headerlink" title="除此之外还有MicroWire"></a>除此之外还有MicroWire</h5><p>MicroWire串行接口是SPI的精简接口，就是除去CS引脚，只有余下的三个引脚。但是时钟改为既可以是自己发出也可以自己接收，比起标准的SPI更为简单与便捷。</p>
-<p><strong>速率比较如下：</strong><br><img src="https://img-blog.csdnimg.cn/20190708221331466.png" alt="在这里插入图片描述"></p>
-<h4 id="ST-EEPROM产品框图"><a href="#ST-EEPROM产品框图" class="headerlink" title="ST  EEPROM产品框图"></a>ST  EEPROM产品框图</h4><p>包含IIC地址配置引脚、控制逻辑、IIC接口、数据寄存器和地址寄存器以及实际存储区域。<br><img src="https://img-blog.csdnimg.cn/20190708221403342.png" alt="在这里插入图片描述"></p>
-<h4 id="EEPROM存储阵列结构："><a href="#EEPROM存储阵列结构：" class="headerlink" title="EEPROM存储阵列结构："></a>EEPROM存储阵列结构：</h4><p><img src="https://img-blog.csdnimg.cn/20190708221527471.png" alt="在这里插入图片描述"><br>EEPROM器件由存储器单元阵列组成，其组织允许字节操作，自动擦除寻址的字节（擦除状态），以及仅编程那些要改变为“1”的位（写入状态）。</p>
-<ul>
-<li>每个存储单元由一个与FLOTOX晶体管串联的选择晶体管组成，每个字节由8个存储单元和一个控制栅极晶体管组成，其漏极与所有8个FLOTOX晶体管的控制栅极共用。</li>
-<li>行（水平方向）由16个字节（或更多）组成，具体取决于内存大小<br>（每行中的字节数是数组大小的函数）。<br>对于每一行，所有选择晶体管和所有控制栅极晶体管都连接到行线。</li>
-<li>列按八个位线加一个Cg线分组。然后将其重复多次，作为一行中的字节数。</li>
-<li>位线对于位于列中的每个存储器单元的选择晶体管的所有漏极是共用的。<br>Cg线对于列的控制栅极晶体管的所有源是共同的。</li>
-</ul>
-<h4 id="应用电路设计"><a href="#应用电路设计" class="headerlink" title="应用电路设计"></a>应用电路设计</h4><p>1）电源引脚增加电阻是为了储能和滤波；<br>2）IIC的数据和时钟线是OD门结构，所以需要上拉；<br>3）写保护引脚上拉电阻是在上电时默认不进行写保护。<br><img src="https://img-blog.csdnimg.cn/20190708221633837.png" alt="在这里插入图片描述"></p>
-<h4 id="EEPROM和Flash的区别"><a href="#EEPROM和Flash的区别" class="headerlink" title="EEPROM和Flash的区别"></a>EEPROM和Flash的区别</h4><p><img src="https://img-blog.csdnimg.cn/20190708221837723.png" alt="在这里插入图片描述"></p>
-<p>请注意，存储时间是理论值并非实际值，人类从发明存储到现在也没多少年，所以100年只是理论估计，具体能不能到100年，要看后面的统计了。</p>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>1、<a href="https://www.st.com/content/ccc/resource/technical/document/application_note/53/e2/c5/a9/e2/57/47/ce/CD00042024.pdf/files/CD00042024.pdf/jcr:content/translations/en.CD00042024.pdf" target="_blank" rel="noopener">意法半导体</a><br>2、<a href="http://www.zlgmcu.com/Category_1412/Index.aspx" target="_blank" rel="noopener">周立功电子</a><br>3、<a href="https://web.eecs.umich.edu/~prabal/teaching/eecs373-f10/readings/rom-eprom-eeprom-technology.pdf" target="_blank" rel="noopener">国外技术网站<del>1</del></a><br>4、<a href="https://www.electronics-notes.com/articles/electronic_components/semiconductor-ic-memory/eeprom-e2prom-technology.php" target="_blank" rel="noopener">国外技术网站<del>2</del></a></p>
+        <h3 id="DDR3-ZQ-Calibration-Introduction-翻译"><a href="#DDR3-ZQ-Calibration-Introduction-翻译" class="headerlink" title="DDR3 ZQ Calibration Introduction-翻译"></a>DDR3 ZQ Calibration Introduction-翻译</h3><h4 id="DDR3-ZQ校准"><a href="#DDR3-ZQ校准" class="headerlink" title="DDR3 ZQ校准"></a>DDR3 ZQ校准</h4><p>为了实现更强大的系统操作，DDR3 SDRAM驱动器设计通过降低电容得到了增强，动态片上端接（ODT）和新的校准方案。<br>电容减少来自于使用新的<strong>合并驱动器</strong>。使用新驱动程序，组成输出驱动程序的电路共享用于ODT。DDR2上使用单独的结构作为输出驱动器和终端阻抗。</p>
+<h5 id="合并驱动器（Merged-Driver）"><a href="#合并驱动器（Merged-Driver）" class="headerlink" title="合并驱动器（Merged Driver）"></a>合并驱动器（Merged Driver）</h5><p><img src="https://img-blog.csdnimg.cn/20190513185915201.png" alt="校准框图"></p>
+<p>注：就是使用很多的内部电阻（MOS实现）阵列，来控制内部阵列改变电阻值，最终改变信号线路驱动能力，使得获得更好的性能。</p>
+<p>合并驱动器的概念使用多个240Ω结构来启用上拉和下拉网络（如上图）。 通过启用相同240Ω结构的不同组合来实现多个终端值。<br>对于DDR3，全功率驱动器的输出阻抗默认为34Ω，通过使能所有7个240Ω引脚获得。<br>要实现DDR3专有的数据速率，必须特别注意信号完整性。<br>最大限度地减少连接存储器控制器和DRAM输出的走线上的任何阻抗不匹配将有助于减少信号上的反射和振铃。<br>为了帮助减少这些阻抗不连续性，DDR3中引入了精确校准方案。</p>
+<h4 id="校准方法"><a href="#校准方法" class="headerlink" title="校准方法"></a>校准方法</h4><h5 id="上拉校准"><a href="#上拉校准" class="headerlink" title="上拉校准"></a>上拉校准</h5><p>DDR3中的ZQ校准用于输出驱动器和ODT。每个DRAM的ZQ球连接到外部精度（±1％）240Ω电阻。只要控制器不与校准相关的任何时序重叠，并且只要电容负载不超过规格，该电阻器的相关配置信息就可以在器件之间共享。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190513190312615.png" alt="校准方式"></p>
+<p>校准控制模块由模数转换器（ADC），比较器，多数滤波器，内部参考电压发生器和近似寄存器组成。校准控制模块中的240Ω支路与输出驱动器和终端选项中使用的上拉支路相匹配。<br>上拉支脚使用略大于240Ω的多晶硅电阻。它采用多个P沟道器件来降低支路电阻，并将多晶硅管调谐至240Ω。该电阻用于存储更线性的上拉和下拉曲线，以提高系统级的信号完整性。</p>
+<p>当给出ZQ校准命令时，上拉线被驱动为低电平，上拉支路被拉至VDDQ。<br>电压上拉（VPULL-UP）线用于通过使用DQ校准控制模块内的比较器，<br>将XRES点的电压与内部产生的参考电压（VDDQ / 2）进行比较。<br>P通道调谐器件使用VOH信号单独调谐，直到X<del>RES</del>的电压等于内部产生的参考电压（VDDQ / 2）。<br>VOH代码存储在内部近似寄存器中，并发送到输出驱动器和终端的每个上拉支路。<br>在所有上拉器件都已校准到外部电阻器后，比较器再次用于比较下拉（VPULL-DOWN）线上的电压与VDDQ / 2时设置的参考电压。<br>此过程生成VOL代码并在适当的时间更新下拉设备，完成校准过程。</p>
+<h4 id="ZQ校准命令"><a href="#ZQ校准命令" class="headerlink" title="ZQ校准命令"></a>ZQ校准命令</h4><p>DDR3中引入了两个与ZQ校准相关的新命令。<br>ZQ CALIBRATION LONG（ZQCL）命令最常用于初始系统上电或器件处于复位状态。ZQCL命令解决了制造工艺变化的问题，并将DRAM校准到初始温度和<br>电压设定。使用ZQCL命令进行完全校准完成需要512个时钟周期。</p>
+<p>在此校准时间内，存储器数据总线必须保持完全空闲和安静。在初始校准之后DRAM空闲的任何时候，可以发出随后的ZQCL命令。<br>对于这些后续命令（有时发出的命令除了初始化和复位之外，完成校准所需的时序窗口减少到256个时钟周期。<br>ZQ CALIBRATION SHORT（ZQCS）命令跟踪与normaloperation相关的连续电压和温度变化。<br>定期短校准使DRAM能够在整个电压和温度范围内保持线性输出驱动器和终端阻抗。<br>ZQCS命令需要64个时钟周期才能完成。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190513190652226.png" alt="校准命令"></p>
+<h4 id="计算校准间隔"><a href="#计算校准间隔" class="headerlink" title="计算校准间隔"></a>计算校准间隔</h4><p>ZQ校准命令的频率取决于系统温度和电压漂移率。<br>为了保持线性输出驱动器和终端阻抗，控制器需要以特定的时间间隔发出ZQCS命令，以应对轻微的系统环境变化。<br>确定这些定时间隔的一种方法是使用DRAM在应用中经受的温度（Tdriftrate）和电压（Vdriftrate）漂移率。<br>  除了系统特定的漂移率，设计应该假设从DDR3规范中获取的最大ODT电压和温度灵敏度，如表2所示。<br>  <img src="https://img-blog.csdnimg.cn/20190513190904182.png" alt="DDR规范"><br>DRAM能够在64个时钟周期（ZQCS命令周期）内校正0.5％的阻抗误差。<br>该数字以及系统漂移率可用于下面的公式中以计算校准间隔。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190513190942604.png" alt="校准间隔"><br>上式举例：</p>
+<p><img src="https://img-blog.csdnimg.cn/2019051319102161.png" alt="计算举例"></p>
+<p>为了保持RON和ODT的准确性，示例中系统的ZQCS命令之间的最长时间为152ms。要确定时钟数，除以tCK。</p>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>与DDR2相比，DDR3 ZQ校准方案可以改善受控阻抗值并显着提高公差。<br>初始化时的长校准使DRAM能够最小化驱动器中存在的任何过程变化。<br>正常操作期间的短校准可减少由于电压和温度漂移引起的阻抗变化。<br>这种精度有助于最大限度地减少PCB走线和驱动器之间的阻抗不连续性，并提高整体信号完整性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">翻译自Micron的技术文档:TN-41-02:DDR3 ZQ Calibration Introduction</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2020于深圳</p>
 
       
     </div>
@@ -437,7 +428,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ROM/" rel="tag"># ROM</a>
+            <a href="/tags/SDRAM/" rel="tag"># SDRAM</a>
           
         </div>
       
@@ -450,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/26/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2020/05/17/FEM/" rel="next" title="FEM">
+                <i class="fa fa-chevron-left"></i> FEM
               </a>
             
           </div>
@@ -459,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/28/ufs/" rel="prev" title="UFS--新一代高速存储">
-                UFS--新一代高速存储 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -629,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#EEPROM"><span class="nav-number">1.</span> <span class="nav-text">EEPROM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM，Electrically-Erasable-Programmable-Read-Only-Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。"><span class="nav-number">1.1.</span> <span class="nav-text">EEPROM，Electrically Erasable Programmable Read Only Memory，电可擦除可编程只读存储器，是一种掉电之后数据不会丢失的存储芯片。</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">注：为什么叫做只读但是也可以擦除编程，因为这种说法来自于早期计算机中相关叫法，当时的技术还没现在这么先进（当时一次写入无法擦除，无法修改），所以叫做只读，最早见于电脑BIOS中。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM的特性"><span class="nav-number">1.2.</span> <span class="nav-text">EEPROM的特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM接口"><span class="nav-number">1.3.</span> <span class="nav-text">EEPROM接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IIC"><span class="nav-number">1.3.1.</span> <span class="nav-text">IIC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#IIC速率：100KHz、400KHz和1MHz，最高可以达到3-2MHz。"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">IIC速率：100KHz、400KHz和1MHz，最高可以达到3.2MHz。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SPI"><span class="nav-number">1.3.2.</span> <span class="nav-text">SPI</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#EEPROM最高可以达到20MHz。"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">EEPROM最高可以达到20MHz。</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除此之外还有MicroWire"><span class="nav-number">1.3.3.</span> <span class="nav-text">除此之外还有MicroWire</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ST-EEPROM产品框图"><span class="nav-number">1.4.</span> <span class="nav-text">ST  EEPROM产品框图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM存储阵列结构："><span class="nav-number">1.5.</span> <span class="nav-text">EEPROM存储阵列结构：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#应用电路设计"><span class="nav-number">1.6.</span> <span class="nav-text">应用电路设计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EEPROM和Flash的区别"><span class="nav-number">1.7.</span> <span class="nav-text">EEPROM和Flash的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">1.8.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#DDR3-ZQ-Calibration-Introduction-翻译"><span class="nav-number">1.</span> <span class="nav-text">DDR3 ZQ Calibration Introduction-翻译</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DDR3-ZQ校准"><span class="nav-number">1.1.</span> <span class="nav-text">DDR3 ZQ校准</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#合并驱动器（Merged-Driver）"><span class="nav-number">1.1.1.</span> <span class="nav-text">合并驱动器（Merged Driver）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#校准方法"><span class="nav-number">1.2.</span> <span class="nav-text">校准方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#上拉校准"><span class="nav-number">1.2.1.</span> <span class="nav-text">上拉校准</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ZQ校准命令"><span class="nav-number">1.3.</span> <span class="nav-text">ZQ校准命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算校准间隔"><span class="nav-number">1.4.</span> <span class="nav-text">计算校准间隔</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论"><span class="nav-number">1.5.</span> <span class="nav-text">结论</span></a></li></ol></li></ol></div>
             
 
           </div>
