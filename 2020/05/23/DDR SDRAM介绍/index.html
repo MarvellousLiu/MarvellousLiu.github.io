@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="npm," />
+  <meta name="keywords" content="SDRAM," />
 
 
 
@@ -77,17 +77,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="description" content="SD RAM介绍及 PCB Layout处理SDRAM—Synchronous dynamic random-access memory (SDRAM)。 同步动态随机存取存储器,即数据的读写需要时钟来信号同步。其存储单元不是按线性排列的，是分页的。 DRAM和SDRAM由于实现工艺问题，容量较SRAM大,但是读写速度不如SDRAM（DRAM）,且不需要刷新操作。 DDR SDRAM X8 DDR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://marvellousliu.github.io/2020/04/26/hello-world/index.html">
+<meta property="og:title" content="DDR SDRAM介绍及PCB Layout">
+<meta property="og:url" content="https://marvellousliu.github.io/2020/05/23/DDR%20SDRAM%E4%BB%8B%E7%BB%8D/index.html">
 <meta property="og:site_name" content="LiuPeng&quot;s Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="article:published_time" content="2020-04-26T12:39:24.070Z">
-<meta property="article:modified_time" content="2020-05-05T11:52:46.172Z">
+<meta property="og:description" content="SD RAM介绍及 PCB Layout处理SDRAM—Synchronous dynamic random-access memory (SDRAM)。 同步动态随机存取存储器,即数据的读写需要时钟来信号同步。其存储单元不是按线性排列的，是分页的。 DRAM和SDRAM由于实现工艺问题，容量较SRAM大,但是读写速度不如SDRAM（DRAM）,且不需要刷新操作。 DDR SDRAM X8 DDR">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200522185458132.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200522185539904.png">
+<meta property="article:published_time" content="2020-05-22T21:15:38.000Z">
+<meta property="article:modified_time" content="2020-05-22T13:20:05.082Z">
 <meta property="article:author" content="LiuPeng">
-<meta property="article:tag" content="npm">
+<meta property="article:tag" content="SDRAM">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200522185458132.png">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://marvellousliu.github.io/2020/04/26/hello-world/"/>
+  <link rel="canonical" href="https://marvellousliu.github.io/2020/05/23/DDR SDRAM介绍/"/>
 
 
 
 
 
-  <title>Hello World | LiuPeng"s Blog</title>
+  <title>DDR SDRAM介绍及PCB Layout | LiuPeng"s Blog</title>
   
 
 
@@ -260,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/04/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://marvellousliu.github.io/2020/05/23/DDR%20SDRAM%E4%BB%8B%E7%BB%8D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="LiuPeng">
@@ -277,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">DDR SDRAM介绍及PCB Layout</h1>
         
 
         <div class="post-meta">
@@ -289,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-26T20:39:24+08:00">
-                2020-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-23T05:15:38+08:00">
+                2020-05-22
               </time>
             
 
@@ -312,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Hexo%E5%8D%9A%E5%AE%A2%E5%91%BD%E4%BB%A4/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo博客命令</span>
+                  <a href="/categories/DDR%E5%AD%98%E5%82%A8/" itemprop="url" rel="index">
+                    <span itemprop="name">DDR存储</span>
                   </a>
                 </span>
 
@@ -330,8 +333,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/26/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/26/hello-world/" itemprop="commentCount"></span>
+                <a href="/2020/05/23/DDR%20SDRAM%E4%BB%8B%E7%BB%8D/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/05/23/DDR%20SDRAM%E4%BB%8B%E7%BB%8D/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -359,19 +362,46 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h3 id="SD-RAM介绍及-PCB-Layout处理"><a href="#SD-RAM介绍及-PCB-Layout处理" class="headerlink" title="SD RAM介绍及 PCB Layout处理"></a>SD RAM介绍及 PCB Layout处理</h3><p><strong>SDRAM—Synchronous dynamic random-access memory (SDRAM)。</strong></p>
+<p>同步动态随机存取存储器,即数据的读写需要时钟来信号同步。其存储单元不是按线性排列的，是分页的。</p>
+<p>DRAM和SDRAM由于实现工艺问题，容量较SRAM大,但是读写速度不如SDRAM（DRAM）,且不需要刷新操作。</p>
+<h3 id="DDR-SDRAM-X8"><a href="#DDR-SDRAM-X8" class="headerlink" title="DDR SDRAM X8"></a>DDR SDRAM X8</h3><p><img src="https://img-blog.csdnimg.cn/20200522185458132.png" alt="在这里插入图片描述"></p>
+<h3 id="DDR-SDRAM-X16"><a href="#DDR-SDRAM-X16" class="headerlink" title="DDR SDRAM X16"></a>DDR SDRAM X16</h3><p><img src="https://img-blog.csdnimg.cn/20200522185539904.png" alt="在这里插入图片描述"></p>
+<h3 id="DDR信号（我们以16位DDR-SDRAM为例说明）"><a href="#DDR信号（我们以16位DDR-SDRAM为例说明）" class="headerlink" title="DDR信号（我们以16位DDR SDRAM为例说明）"></a>DDR信号（我们以16位DDR SDRAM为例说明）</h3><p><strong>CK差分-时钟</strong><br>CK和CK#是差分时钟输入。所有地址和控制输入信号均在CK的上升沿和CK的下降沿的交点处采样。</p>
+<p><strong>CKE-时钟使能</strong><br>内部时钟信号以及设备输入缓冲器和输出驱动器激活CKE HIGH，而禁用CKE Low。<br>将CKE设为低电平可提供预充电掉电和自刷新操作（所有Bank都处于空闲状态），或有效掉电（在任何Bank中均处于活动状态）。对于自刷新退出，CKE是异步的。 在上电和初始化序列期间VREFCA和VREFDQ变得稳定之后，必须在所有操作（包括自刷新）中维护它们。在整个读写访问过程中，必须将CKE保持在较高水平。掉电期间禁用除CK，CK，ODT和CKE以外的输入缓冲器。自刷新期间禁用除CKE以外的输入缓冲区。</p>
+<p><strong>CS-片选</strong><br>CS设置为高电平时，所有命令均被屏蔽。CS为具有多个等级的系统提供外部等级选择。CS被视为命令代码的一部分。</p>
+<p><strong>ODT-端接</strong><br>ODT（注册为HIGH）使能DDR3 SDRAM内部的端接电阻。<br>启用后，ODT仅适用于x4 / x8配置的每个DQ，DQS-DQS#和DM / TDQS-NU / TDQS（当通过MR1中的模式寄存器A11 = 1启用TDQS时）信号。<br>对于x16配置，ODT应用于每个DQ，DQSU-DQSU#，DQSL-DQSL#，DMU-DML信号。</p>
+<p>如果MR1被编程为禁用ODT，则ODT引脚将被忽略。</p>
+<p><strong>命令输入</strong><br>RAS，CAS和WE（以及CS）定义要输入的命令。<br>1）RAS：行地址；<br>2）CAS：列地址；<br>3）WE：写使能信号。</p>
+<p><strong>DM-输入数据屏蔽</strong><br>DM是用于写数据的输入掩码信号。 在写访问期间，当DM采样到与该输入数据一致的高电平时，将屏蔽输入数据。<br>DM在DQS的两个边缘上采样。 DM包含UDM和LDM，各自控制8位数据线。</p>
+<p>对于x8设备，通过MR1中的模式寄存器A11设置启用DM或TDQS / TDQS#功能。</p>
+<p><strong>BA0/BA1-Bank地址输入</strong><br>BA [2：0]定义正在应用Bank激活，读取，写入，激活，PRECHARGE命令。<br>BA [2：0]定义在LOAD MODE命令期间加载哪个模式寄存器（MR0，MR1，MR2或MR3）。<br>BA [2：0]参考到VREFCA。</p>
+<p><strong>A0-A15-地址信号输入</strong><br>为活动命令提供行地址，为读/写命令提供列地址，以从相应存储体的存储器阵列中选择一个位置。 （A10 / AP和A12 / BC具有其他功能，请参见下文）。</p>
+<p>在模式寄存器设置命令期间，地址输入还提供操作码。<br>注：镁光的片子一般DDR地址只有14位。</p>
+<p><strong>A10/AP-预充电</strong><br>在读/写命令期间对A10进行采样，以确定是否应在读/写操作后对所访问的存储体执行自动预充电。（高：自动预充电；低：无自动预充电）。</p>
+<p>在预充电命令期间对A10进行采样，以确定预充电是适用于一个Bank（A10低电平）还是适用于所有Bank（A10高电平）。如果仅要预充一个Bank，则按Bank选择该Bank地址。</p>
+<p><strong>A12/BC-突发传输</strong><br>在读取和写入命令期间对A12 / BC进行采样，以确定是否将执行突发斩波。（高，无突发斩波；低：突发斩波）。</p>
+<p><strong>RESET-复位</strong><br>低电平有效异步复位：当RESET为低电平时复位有效，而当RESET为高电平时无效。在正常操作期间，RESET必须为高电平。<br>RESET是CMOS轨到轨信号，其DC高低为VDD的80％和20％，即DC高时为1.20V，DC低时为0.30V。<br>DQ[15:0]-数据输入输出<br>双向数据总线，16位数据线配置。</p>
+<p><strong>DQS-数据选通</strong><br>输出带有读取数据。与读取数据边缘对齐。输入写入数据。LDQS居中对齐以写入数据。</p>
+<p>16位DDR的DQS信号有DQSL-DQSL#和DQSU-DQSU#两对差分线；<br>DDR3 SDRAM仅支持差分数据选通，不支持单端。</p>
+<p><strong>TDQS-8位数据选通</strong><br>TDQS / TDQS仅适用于x8 DRAM。 通过MR1中的模式寄存器A11 = 1启用时，DRAM将在TDQS / TDQS上启用与DQS / DQS相同的终端电阻功能。</p>
+<p>当通过MR1中的模式寄存器A11 = 0禁用时，DM / TDQS将提供数据屏蔽功能，并且不使用TDQS。</p>
+<p>x4 / x16 DRAM必须通过MR1中的模式寄存器A11 = 0禁用TDQS功能。</p>
+<p><strong>ZQ Calebration-ZQ校准</strong><br>ZQ校准参考引脚</p>
+<p><strong>V<del>REFDQ</del></strong><br>DQ参考电压</p>
+<p><strong>V<del>REFCA</del></strong><br>CA参考电压</p>
+<p><strong>DDR电源</strong><br>DQ Power Supply: 1.5 V +/- 0.075 V<br>DQ电源：1.5 V +/- 0.075 V</p>
+<p><strong>DDR电流</strong><br>DDR电流：Die Rev. D，取决于DDR的Die设计生产时的工艺，像D工艺下DDR的电流大小是425mA，在M工艺下电流为230mA。（D、H、K、M）</p>
+<h3 id="DDR的Layout要点"><a href="#DDR的Layout要点" class="headerlink" title="DDR的Layout要点"></a>DDR的Layout要点</h3><p><strong>DDR电源设计</strong><br>DDR3 SDRAM 的 VREF（0.75V）电源都必须和其它电源隔离，可以通过较宽的走线（20mil 及以上）连接，保证每个电源管脚尽可能就近摆放去耦电容，并且最好在 PCB上对 VREF 加包地屏蔽处理。</p>
+<p><strong>VREF 参考电压设计</strong><br>1、参考电压设计时，需要重点关注参考电压的布线。根据 SSTL-15 协议要求，VREF参考电压上的噪声不得超过±1%，为了降低噪声，VREF 走线宽度尽量宽，建议将VREF 在电源平面层通过铜皮布线，且不能作为信号线的参考平面；<br>2、每个 VREF pin 要加去耦电容且走线尽量宽，与其它信号线间隔 20mil～25mil。</p>
+<p><strong>DDR时钟差分线</strong><br>1、CLK 信号走线长度最长不能超过 4inch；<br>2、CLK 差分对信号走线严格走差分，差分对内部走线的长度差推荐小于 5mil，即：|LCLKxP-LCLKxN| &lt; 5mil；<br>3、DDR 走线线宽和线间距不能小于 4mil。</p>
+<p><strong>数据选通DQS信号</strong><br>1、DQS 差分对内部两根信号线严格等长，差分走线长度偏差推荐小于 5mil，即：<br>|LDQSxP-LDQSxN| &lt; 5mil；<br>2、DQS 以 CLK 时钟走线长度为参照进行走线，其走线长度相对于 CLK 的走线长度允许的偏差为﹣500<del>0mil，即：LDQSx = LCLKx- (0</del>500mil)；</p>
+<p><strong>DQ信号线</strong><br>1、DQ[7:0]以 DQS0 的走线长度为参照进行走线，允许偏差范围为±100mil，即：<br>LDQ[7:0] = LDQS0 +/-100mil；<br>2、DQ[15:8]以 DQS1 的走线长度为参照进行走线，允许偏差范围为±100mil，即：LDQ[15:8] = LDQS1 +/- 100mil；<br>3、数据走线推荐以 GND 层为参考平面，在无法满足的情况下，要求同组同层走线。</p>
+<p><strong>数据掩码DM信号</strong><br>1、DM0 以 DQS0 的走线长度为参照进行走线，允许偏差范围为±100mil；<br>2、DM1 以 DQS1 的走线长度为参照进行走线，允许偏差范围为±100mil。</p>
+<p><strong>地址信号线ADDR</strong><br>ADDR[14:0]以 CLK 时钟走线长度为参照进行走线，允许偏差范围为±200mil，<br>即：LADDR = LCLK +/- 200mil；</p>
+<p><strong>控制线</strong><br>控制信号线 BA[2:0]、DM、CKE、CSN、WEN、CASN、RASN、ODT 的 PCB 走线长<br>度要求如下：<br>1、控制信号线以 CLK 时钟走线长度为参照进行走线，允许偏差范围为±200mil；<br>2、为减小信号反射，建议所有 DDR3 SDRAM 接口信号走线避免穿越电源地分割区域，保持完整的电源地参考平面。</p>
+<p><strong>综述阻抗控制</strong><br>信号线尽量短，走线路径上尽量少打过孔，保证走线阻抗的连续性。在 2 层板PCB 设计时传输线阻抗控制在 140Ω±10%，在 4 层板 PCB 设计时传输线阻抗控制在 50Ω±10%，差分线阻抗控制在 100Ω±10%。</p>
+<p>2020于深圳</p>
 
       
     </div>
@@ -413,7 +443,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/npm/" rel="tag"># npm</a>
+            <a href="/tags/SDRAM/" rel="tag"># SDRAM</a>
           
         </div>
       
@@ -426,15 +456,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2020/05/20/DDR%E4%BB%8B%E7%BB%8D/" rel="next" title="DDR介绍">
+                <i class="fa fa-chevron-left"></i> DDR介绍
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/27/EEPROM%E4%B8%8EFlash%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="EEPROM与Flash的区别">
-                EEPROM与Flash的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -601,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#SD-RAM介绍及-PCB-Layout处理"><span class="nav-number">1.</span> <span class="nav-text">SD RAM介绍及 PCB Layout处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDR-SDRAM-X8"><span class="nav-number">2.</span> <span class="nav-text">DDR SDRAM X8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDR-SDRAM-X16"><span class="nav-number">3.</span> <span class="nav-text">DDR SDRAM X16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDR信号（我们以16位DDR-SDRAM为例说明）"><span class="nav-number">4.</span> <span class="nav-text">DDR信号（我们以16位DDR SDRAM为例说明）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DDR的Layout要点"><span class="nav-number">5.</span> <span class="nav-text">DDR的Layout要点</span></a></li></ol></div>
             
 
           </div>
